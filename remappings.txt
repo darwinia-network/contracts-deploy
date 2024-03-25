@@ -1,0 +1,3 @@
+@subapi/=lib/subapi/
+@ORMP/=lib/ORMP/
+@darwinia-msgport/=lib/darwinia-msgport/

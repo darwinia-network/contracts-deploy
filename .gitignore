@@ -1,0 +1,7 @@
+.env
+.DS_Store
+/docs
+/out
+/cache
+/artifacts
+/broadcast
