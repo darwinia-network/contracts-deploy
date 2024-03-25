@@ -4,3 +4,6 @@
 [submodule "lib/ORMP"]
 	path = lib/ORMP
 	url = https://github.com/darwinia-network/ORMP
+[submodule "lib/darwinia-msgport"]
+	path = lib/darwinia-msgport
+	url = https://github.com/darwinia-network/darwinia-msgport
