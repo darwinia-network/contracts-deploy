@@ -1,3 +1,6 @@
 [submodule "lib/subapi"]
 	path = lib/subapi
 	url = https://github.com/subapidao/subapi
+[submodule "lib/ORMP"]
+	path = lib/ORMP
+	url = https://github.com/darwinia-network/ORMP
