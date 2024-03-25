@@ -1,0 +1,3 @@
+[submodule "lib/subapi"]
+	path = lib/subapi
+	url = https://github.com/subapidao/subapi
