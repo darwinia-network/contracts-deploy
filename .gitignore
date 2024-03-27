@@ -5,4 +5,5 @@
 /cache
 /artifacts
 /broadcast
+/deployments/*/*/execution
 /node_modules

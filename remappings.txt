@@ -3,3 +3,5 @@ ORMP/=lib/ORMP/
 @darwinia-msgport/=lib/darwinia-msgport/
 @openzeppelin/contracts@4.9.2/=lib/openzeppelin-contracts/contracts/
 @openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
+@safe-smart-account/=lib/subapi/lib/safe-smart-account/contracts/
+@sphinx-labs/contracts/=lib/sphinx/packages/contracts/contracts/foundry
