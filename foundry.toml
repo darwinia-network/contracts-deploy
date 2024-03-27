@@ -23,3 +23,4 @@ sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
 
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}"}
+arbitrum-sepolia = { key = "B8NV13DHX1AUCT4V8B4HS4EVWJMCRC9SMX"}

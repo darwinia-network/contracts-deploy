@@ -50,36 +50,46 @@ contract DeployScript is Base {
     function deploySubAPIMultiSig() internal {
         bytes memory byteCode = type(SubAPIMultiSig).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(signers, quorum));
-        subapiMultisig = _deploy2(salt, initCode);
         subapiMultisig = computeAddress(salt, hash(initCode));
+        if (subapiMultisig.code.length == 0) {
+            subapiMultisig = _deploy2(salt, initCode);
+        }
     }
 
     function deployORMP() internal {
         bytes memory byteCode = type(ORMP).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(dao));
-        ormp = _deploy2(salt, initCode);
         ormp = computeAddress(salt, hash(initCode));
+        if (ormp.code.length == 0) {
+            ormp = _deploy2(salt, initCode);
+        }
     }
 
     function deployOracle() internal {
         bytes memory byteCode = type(Oracle).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(dao));
-        oracle = _deploy2(salt, initCode);
         oracle = computeAddress(salt, hash(initCode));
+        if (oracle.code.length == 0) {
+            oracle = _deploy2(salt, initCode);
+        }
     }
 
     function deployRelayer() internal {
         bytes memory byteCode = type(Relayer).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(dao, ormp));
-        relayer = _deploy2(salt, initCode);
         relayer = computeAddress(salt, hash(initCode));
+        if (relayer.code.length == 0) {
+            relayer = _deploy2(salt, initCode);
+        }
     }
 
     function deployORMPUPort() internal {
         string memory name = "ORMP-U";
         bytes memory byteCode = type(ORMPUpgradeablePort).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(dao, ormp, name));
-        ormpUpgradeablePort = _deploy2(salt, initCode);
         ormpUpgradeablePort = computeAddress(salt, hash(initCode));
+        if (ormpUpgradeablePort.code.length == 0) {
+            ormpUpgradeablePort = _deploy2(salt, initCode);
+        }
     }
 }
