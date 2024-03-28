@@ -8,9 +8,11 @@ abstract contract Base is Sphinx {
 
     function configureSphinx() public override {
         sphinxConfig.owners = [0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f];
-        sphinxConfig.orgId = "Sphinx org ID";
+        sphinxConfig.orgId = "cluanacaw000111jik4xs4wkl";
         sphinxConfig.projectName = "Msgport";
         sphinxConfig.threshold = 1;
+        // sphinxConfig.testnets = ["sepolia", "pangolin", "arbitrum-sepolia", "taiko-katla"];
+        sphinxConfig.testnets = ["sepolia", "arbitrum-sepolia"];
     }
 
     function _deploy2(bytes32 salt, bytes memory initCode) internal returns (address) {
