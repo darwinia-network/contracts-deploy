@@ -16,10 +16,11 @@ library Chains {
     uint256 internal constant Zksync = 324;
     uint256 internal constant OptimismGoerli = 420;
     uint256 internal constant Mantle = 5000;
-	uint256 internal constant Anvil = 31337;
+    uint256 internal constant Anvil = 31337;
     uint256 internal constant Arbitrum = 42161;
     uint256 internal constant Mumbai = 80001;
-	uint256 internal constant Blast = 81457;
+    uint256 internal constant Blast = 81457;
+    uint256 internal constant TaikoKatla = 167008;
     uint256 internal constant ArbitrumGoerli = 421613;
     uint256 internal constant ArbitrumSepolia = 421614;
     uint256 internal constant Sepolia = 11155111;
@@ -50,13 +51,15 @@ library Chains {
         } else if (chainid == Mantle) {
             return "mantle";
         } else if (chainid == Anvil) {
-			return 'anvil';
+            return "anvil";
         } else if (chainid == Arbitrum) {
             return "arbitrum";
         } else if (chainid == Mumbai) {
             return "mumbai";
         } else if (chainid == Blast) {
             return "blast";
+        } else if (chainid == TaikoKatla) {
+            return "taiko_katla";
         } else if (chainid == ArbitrumGoerli) {
             return "arbitrum_goerli";
         } else if (chainid == ArbitrumSepolia) {
@@ -66,16 +69,12 @@ library Chains {
         } else if (chainid == OptimismSepolia) {
             return "optimism_sepolia";
         } else {
-            revert(
-            string(abi.encodePacked("No network found with the chain ID: ", vm.toString(chainId)))
-        	);
-		}
+            revert(string(abi.encodePacked("No network found with the chain ID: ", vm.toString(chainid))));
+        }
     }
 
     function isL2(uint256 chainid) internal pure returns (bool) {
-        if (chainid == Ethereum) { return false;
-        } else {
-            return true;
-        }
+        if (chainid == Ethereum) return false;
+        else return true;
     }
 }
