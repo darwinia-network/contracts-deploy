@@ -3,13 +3,15 @@
 
 -include .env
 
+
+
 all    :; @forge build
 fmt    :; @forge fmt
 clean  :; @forge clean
 deploy :; @npx sphinx deploy  ./script/Deploy.s.sol --network  $(chain) --verify --confirm
 
-propose-test:; @npx sphinx propose ./script/Deploy.s.sol --networks testnets 
-propose-prod:; @npx sphinx propose ./script/Deploy.s.sol --networks mainnets 
+propose-test:; @SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx propose ./script/Deploy.s.sol --networks testnets 
+propose-prod:; @SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx propose ./script/Deploy.s.sol --networks mainnets 
 
 sync   :; @git submodule update --recursive
 tools  :  foundry

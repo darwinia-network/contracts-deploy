@@ -7,7 +7,7 @@ import {Base} from "./Base.sol";
 import "../src/Msgport.sol";
 
 contract DeployScript is Base {
-    bytes32 salt = bytes32(0);
+    bytes32 salt = bytes32(uint256(1));
     address[] signers = [
         0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77,
         0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85,
@@ -33,7 +33,10 @@ contract DeployScript is Base {
         // Deploy ORMP
         deployORMP();
         deployOracle();
+        configOracle();
         deployRelayer();
+        configRelayer();
+        configORMP();
 
         // Deploy ORMPUpgradeablePort
         deployORMPUPort();
@@ -66,12 +69,53 @@ contract DeployScript is Base {
         }
     }
 
+    function configOracle() internal {
+        Oracle o = Oracle(payable(oracle));
+        address echo = 0x0f14341A7f464320319025540E8Fe48Ad0fe5aec;
+        address yalin = 0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77;
+        if (!o.isApproved(dao)) {
+            o.setApproved(dao, true);
+        }
+        if (!o.isApproved(echo)) {
+            o.setApproved(echo, true);
+        }
+        if (!o.isApproved(yalin)) {
+            o.setApproved(yalin, true);
+        }
+        address owner = o.owner();
+        if (owner != subapiMultisig) {
+            o.changeOwner(subapiMultisig);
+        }
+    }
+
     function deployRelayer() internal {
         bytes memory byteCode = type(Relayer).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(dao, ormp));
         relayer = computeAddress(salt, hash(initCode));
         if (relayer.code.length == 0) {
             relayer = _deploy2(salt, initCode);
+        }
+    }
+
+    function configRelayer() internal {
+        Relayer r = Relayer(payable(relayer));
+        address echo = 0x0f14341A7f464320319025540E8Fe48Ad0fe5aec;
+        address yalin = 0x912D7601569cBc2DF8A7f0aaE50BFd18e8C64d05;
+        if (!r.isApproved(dao)) {
+            r.setApproved(dao, true);
+        }
+        if (!r.isApproved(echo)) {
+            r.setApproved(echo, true);
+        }
+        if (!r.isApproved(yalin)) {
+            r.setApproved(yalin, true);
+        }
+    }
+
+    function configORMP() internal {
+        (address o, address r) = ORMP(ormp).defaultUC();
+        if (o != oracle || r != relayer) {
+            ORMP(ormp).setDefaultConfig(oracle, relayer);
         }
     }
 
