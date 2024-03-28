@@ -127,5 +127,10 @@ contract DeployScript is Base {
         if (ormpUpgradeablePort.code.length == 0) {
             ormpUpgradeablePort = _deploy2(salt, initCode);
         }
+		string memory uri = "ipfs://bafybeifa7fgeb63rnashodi5k27fxfqfc65hdbyjum5aiqtd2xjeno2dgy";
+		string memory u = ORMPUpgradeablePort(ormpUpgradeablePort).uri();
+		if (hash(uri) != hash(u)) {
+			ORMPUpgradeablePort(ormpUpgradeablePort).setURI(uri);
+		}
     }
 }

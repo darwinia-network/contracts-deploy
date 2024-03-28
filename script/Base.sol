@@ -37,4 +37,8 @@ abstract contract Base is Sphinx {
     function hash(bytes memory data) internal pure returns (bytes32) {
         return keccak256(data);
     }
+
+    function hash(string memory data) internal pure returns (bytes32) {
+        return hash(bytes(data));
+    }
 }
