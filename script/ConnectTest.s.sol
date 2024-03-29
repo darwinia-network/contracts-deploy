@@ -13,9 +13,9 @@ contract ConnectTestScript is Base {
     using Chains for uint256;
     using SafeCast for uint256;
 
-    Oracle oracle = Oracle(payable(0x1502ba96644a3b660Ee9cdC214f9B739Ee04b7F1));
-    Relayer relayer = Relayer(payable(0x5326853463Eb23e738Fb9CbFEb6d7361cb4E8AA5));
-    ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0xf7472Fc23788946FB89bBF0666F0A9D79A69EcB4);
+    Oracle oracle = Oracle(payable(0xDD8c7c84DaCBbB60F1CfC4f10046245da1E0f33D));
+    Relayer relayer = Relayer(payable(0xb773319D6Eb7f34b8EAB26Ea5F5ea694E7EF6362));
+    ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0x7e829b7969a5d09A75E0A6F27f306b8C89641C9d);
 
     // Oracle config
     uint256 priceMultiplier = 1e9;
@@ -132,11 +132,11 @@ contract ConnectTestScript is Base {
         }
         if (block.chainid == Chains.Sepolia || block.chainid == Chains.TaikoKatla) {
             uint128 dstPriceRatio = 1e10;
-            _setRelayerFee(Chains.Sepolia, dstPriceRatio, dstGasPriceInWei, baseGas);
+            _setRelayerFee(Chains.ArbitrumSepolia, dstPriceRatio, dstGasPriceInWei, baseGas);
         }
         if (block.chainid == Chains.Pangolin) {
             uint256 dstPriceRatio = ethPrice * 1e10 / ringPrice;
-            _setRelayerFee(Chains.Sepolia, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
+            _setRelayerFee(Chains.ArbitrumSepolia, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
         }
     }
 
@@ -149,11 +149,11 @@ contract ConnectTestScript is Base {
         }
         if (block.chainid == Chains.Sepolia || block.chainid == Chains.ArbitrumSepolia) {
             uint128 dstPriceRatio = 1e10;
-            _setRelayerFee(Chains.Sepolia, dstPriceRatio, dstGasPriceInWei, baseGas);
+            _setRelayerFee(Chains.TaikoKatla, dstPriceRatio, dstGasPriceInWei, baseGas);
         }
         if (block.chainid == Chains.Pangolin) {
             uint256 dstPriceRatio = ethPrice * 1e10 / ringPrice;
-            _setRelayerFee(Chains.Sepolia, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
+            _setRelayerFee(Chains.TaikoKatla, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
         }
     }
 

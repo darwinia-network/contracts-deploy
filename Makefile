@@ -8,10 +8,11 @@
 all    :; @forge build
 fmt    :; @forge fmt
 clean  :; @forge clean
-deploy :; @npx sphinx deploy  ./script/Deploy.s.sol --network  $(chain) --verify --confirm
+deploy :; @@SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx deploy  ./script/Deploy.s.sol --network $(chain) --verify --confirm
 
-propose-test:; @SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx propose ./script/Deploy.s.sol --networks testnets 
-propose-prod:; @SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx propose ./script/Deploy.s.sol --networks mainnets 
+propose-deploy-test  :; @SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx propose ./script/Deploy.s.sol      --networks testnets
+propose-deploy-prod  :; @SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx propose ./script/Deploy.s.sol      --networks mainnets
+propose-connect-test :;	@SPHINX_API_KEY=$(SPHINX_API_KEY) npx sphinx propose ./script/ConnectTest.s.sol --networks testnets
 
 sync   :; @git submodule update --recursive
 tools  :  foundry
