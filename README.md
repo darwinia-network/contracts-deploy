@@ -18,3 +18,4 @@ TODO
 ### Testnet
 - Arbitrum Sepolia
 - Sepolia
+- Taiko Katla

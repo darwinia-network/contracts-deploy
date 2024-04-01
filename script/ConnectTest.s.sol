@@ -21,7 +21,7 @@ contract ConnectTestScript is Base {
     uint256 priceMultiplier = 1e9;
     uint256 ethPrice = 3600 * priceMultiplier;
     uint256 ringPrice = priceMultiplier / 200;
-    uint256 gasPrice = 40 gwei;
+    uint256 gasPrice = 25 gwei;
 
     // Relayer config
     uint64 gasPerByte = 16;

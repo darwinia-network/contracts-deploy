@@ -12,7 +12,7 @@ abstract contract Base is Sphinx {
         sphinxConfig.projectName = "Msgport";
         sphinxConfig.threshold = 1;
         // sphinxConfig.testnets = ["sepolia", "pangolin", "arbitrum-sepolia", "taiko-katla"];
-        sphinxConfig.testnets = ["sepolia", "arbitrum-sepolia"];
+        sphinxConfig.testnets = ["sepolia", "arbitrum-sepolia", "taiko-katla"];
     }
 
     function _deploy2(bytes32 salt, bytes memory initCode) internal returns (address) {
