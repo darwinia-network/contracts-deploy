@@ -12,8 +12,8 @@ abstract contract Base is Sphinx {
         sphinxConfig.orgId = "cluanacaw000111jik4xs4wkl";
         sphinxConfig.projectName = "Msgport";
         sphinxConfig.threshold = 1;
-        // sphinxConfig.testnets = ["sepolia", "pangolin", "arbitrum-sepolia", "taiko-katla"];
-        sphinxConfig.testnets = ["sepolia", "arbitrum-sepolia", "taiko-katla"];
+        // sphinxConfig.testnets = ["sepolia", "pangolin", "arbitrum_sepolia", "taiko_katla"];
+        sphinxConfig.testnets = ["sepolia", "arbitrum_sepolia", "taiko_katla"];
     }
 
     function _deploy2(bytes32 salt, bytes memory initCode)

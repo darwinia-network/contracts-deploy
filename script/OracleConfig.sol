@@ -5,7 +5,7 @@ import "./Constants.sol";
 
 contract OracleConfig is Constants {
     // local => remote
-    mapping(uint256 => uint256) oracleFeeOf;
+    mapping(uint256 => mapping(uint256 => uint256)) public oracleFeeOf;
 
     error NotFoundOracleConfig(uint256 local, uint256 remote);
 

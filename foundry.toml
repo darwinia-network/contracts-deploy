@@ -18,10 +18,10 @@ fs_permissions = [
 ]
 
 [rpc_endpoints]
-arbitrum-sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
+arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
 pangolin = "https://pangolin-rpc.darwinia.network"
 sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
-taiko-katla = "https://rpc.katla.taiko.xyz"
+taiko_katla = "https://rpc.katla.taiko.xyz"
 
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}"}

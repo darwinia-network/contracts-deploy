@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./Constants.sol";
 
 /// @notice Chain IDs for the various networks.
-contract Chains is Constants {
+contract ChainsConfig is Constants {
     mapping(uint256 => string) public chainNameOf;
     mapping(string => uint256) public chainIdOf;
 
