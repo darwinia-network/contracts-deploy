@@ -26,13 +26,13 @@ contract ConnectTestScript is Chains, Base {
     uint64 gasPerByte = 16;
 
     function run() public sphinx {
-		string[] memory testnets = sphinxConfig.testnets;
-		uint len = testnets.length;
-		for (uint i = 0; i < len; i++) {
-			setOracleFee();
-			setRelayerFee();
-			setPortLookup();
-		}
+        string[] memory testnets = sphinxConfig.testnets;
+        uint256 len = testnets.length;
+        for (uint256 i = 0; i < len; i++) {
+            setOracleFee();
+            setRelayerFee();
+            setPortLookup();
+        }
     }
 
     function setOracleFee() internal {

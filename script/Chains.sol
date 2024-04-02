@@ -24,75 +24,75 @@ contract Chains {
     uint256 internal constant OptimismSepolia = 11155420;
     Vm constant vm = Vm(address(bytes20(uint160(uint256(keccak256("hevm cheat code"))))));
 
-	mapping(uint => string) public chainNameOf;
-	mapping(string => uint) public chainIdOf;
+    mapping(uint256 => string) public chainNameOf;
+    mapping(string => uint256) public chainIdOf;
 
-	constructor() {
-		chainIdOf["ethereum"] = Ethereum;
-		chainNameOf[Ethereum] = "ethereum";
+    constructor() {
+        chainIdOf["ethereum"] = Ethereum;
+        chainNameOf[Ethereum] = "ethereum";
 
-		chainIdOf["goerli"] = Goerli;
-		chainNameOf[Goerli] = "goerli";
+        chainIdOf["goerli"] = Goerli;
+        chainNameOf[Goerli] = "goerli";
 
-		chainIdOf["optimism"] = Optimism;
-		chainNameOf[Optimism] = "optimism";
+        chainIdOf["optimism"] = Optimism;
+        chainNameOf[Optimism] = "optimism";
 
-		chainIdOf["pangolin"] = Pangolin;
-		chainNameOf[Pangolin] = "pangolin";
+        chainIdOf["pangolin"] = Pangolin;
+        chainNameOf[Pangolin] = "pangolin";
 
-		chainIdOf["crab"] = Crab;
-		chainNameOf[Crab] = "Crab";
+        chainIdOf["crab"] = Crab;
+        chainNameOf[Crab] = "Crab";
 
-		chainIdOf["darwinia"] = Darwinia;
-		chainNameOf[Darwinia] = "darwinia";
+        chainIdOf["darwinia"] = Darwinia;
+        chainNameOf[Darwinia] = "darwinia";
 
-		chainIdOf["polygon"] = Polygon;
-		chainNameOf[Polygon] = "polygon";
+        chainIdOf["polygon"] = Polygon;
+        chainNameOf[Polygon] = "polygon";
 
-		chainIdOf["zksync"] = Zksync;
-		chainNameOf[Zksync] = "zksync";
+        chainIdOf["zksync"] = Zksync;
+        chainNameOf[Zksync] = "zksync";
 
-		chainIdOf["mantle"] = Mantle;
-		chainNameOf[Mantle] = "mantle";
+        chainIdOf["mantle"] = Mantle;
+        chainNameOf[Mantle] = "mantle";
 
-		chainIdOf["anvil"] = Anvil;
-		chainNameOf[Anvil] = "anvil";
+        chainIdOf["anvil"] = Anvil;
+        chainNameOf[Anvil] = "anvil";
 
-		chainIdOf["arbitrum"] = Arbitrum;
-		chainNameOf[Arbitrum] = "arbitrum";
+        chainIdOf["arbitrum"] = Arbitrum;
+        chainNameOf[Arbitrum] = "arbitrum";
 
-		chainIdOf["mumbai"] = Mumbai;
-		chainNameOf[Mumbai] = "mumbai";
+        chainIdOf["mumbai"] = Mumbai;
+        chainNameOf[Mumbai] = "mumbai";
 
-		chainIdOf["blast"] = Blast;
-		chainNameOf[Blast] = "blast";
+        chainIdOf["blast"] = Blast;
+        chainNameOf[Blast] = "blast";
 
-		chainIdOf["taiko_katla"] = TaikoKatla;
-		chainNameOf[TaikoKatla] = "taiko_katla";
+        chainIdOf["taiko_katla"] = TaikoKatla;
+        chainNameOf[TaikoKatla] = "taiko_katla";
 
-		chainIdOf["arbitrum_sepolia"] = ArbitrumSepolia;
-		chainNameOf[ArbitrumSepolia] = "arbitrum_sepolia";
+        chainIdOf["arbitrum_sepolia"] = ArbitrumSepolia;
+        chainNameOf[ArbitrumSepolia] = "arbitrum_sepolia";
 
-		chainIdOf["sepolia"] = Sepolia;
-		chainNameOf[Sepolia] = "sepolia";
+        chainIdOf["sepolia"] = Sepolia;
+        chainNameOf[Sepolia] = "sepolia";
 
-		chainIdOf["optimism_sepolia"] = OptimismSepolia;
-		chainNameOf[OptimismSepolia] = "optimism_sepolia";
-	}
-
-    function toChainName(uint256 chainid) public view returns (string memory name) {
-		name = chainNameOf[chainid];
-		if (bytes(name).length == 0) {
-           revert(string(abi.encodePacked("No network found with the chain ID: ", vm.toString(chainid))));
-		}
+        chainIdOf["optimism_sepolia"] = OptimismSepolia;
+        chainNameOf[OptimismSepolia] = "optimism_sepolia";
     }
 
-	function toChainId(string memory chainName) public view returns (uint256 chainid) {
-		chainid = chainIdOf[chainName];
-		if (chainid == 0) {
-           revert(string(abi.encodePacked("No network found with the chain name: ", chainName)));
-		}
-	}
+    function toChainName(uint256 chainid) public view returns (string memory name) {
+        name = chainNameOf[chainid];
+        if (bytes(name).length == 0) {
+            revert(string(abi.encodePacked("No network found with the chain ID: ", vm.toString(chainid))));
+        }
+    }
+
+    function toChainId(string memory chainName) public view returns (uint256 chainid) {
+        chainid = chainIdOf[chainName];
+        if (chainid == 0) {
+            revert(string(abi.encodePacked("No network found with the chain name: ", chainName)));
+        }
+    }
 
     function isL2(uint256 chainid) internal pure returns (bool) {
         if (chainid == Ethereum) return false;
