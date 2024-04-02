@@ -28,3 +28,6 @@ sepolia = { key = "${ETHERSCAN_API_KEY}"}
 arbitrum-sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}"}
 pangolin = { key = "", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
 taiko-katla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/1/etherscan/api"}
+
+[fmt]
+line_length = 80

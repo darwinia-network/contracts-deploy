@@ -1,31 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {Vm} from "forge-std/Vm.sol";
+import "./Constants.sol";
 
 /// @notice Chain IDs for the various networks.
-contract Chains {
-    uint256 internal constant Ethereum = 1;
-    uint256 internal constant Goerli = 5;
-    uint256 internal constant Optimism = 10;
-    uint256 internal constant Pangolin = 43;
-    uint256 internal constant Crab = 44;
-    uint256 internal constant Darwinia = 46;
-    uint256 internal constant Polygon = 137;
-    uint256 internal constant Zksync = 324;
-    uint256 internal constant Mantle = 5000;
-    uint256 internal constant Anvil = 31337;
-    uint256 internal constant Arbitrum = 42161;
-    uint256 internal constant Mumbai = 80001;
-    uint256 internal constant Blast = 81457;
-    uint256 internal constant TaikoKatla = 167008;
-    uint256 internal constant ArbitrumSepolia = 421614;
-    uint256 internal constant Sepolia = 11155111;
-    uint256 internal constant OptimismSepolia = 11155420;
-    Vm constant vm = Vm(address(bytes20(uint160(uint256(keccak256("hevm cheat code"))))));
-
+contract Chains is Constants {
     mapping(uint256 => string) public chainNameOf;
     mapping(string => uint256) public chainIdOf;
+
+    error NotFoundChainId(uint256 chainId);
+    error NotFoundChainName(string chainName);
+    error AlreadAddedChainId(uint256 chainId);
+    error AlreadAddedChainName(string chainName);
 
     constructor() {
         chainIdOf["ethereum"] = Ethereum;
@@ -80,36 +66,44 @@ contract Chains {
         chainNameOf[OptimismSepolia] = "optimism_sepolia";
     }
 
-    function addChain(string memory chainName, uint256 chainid) public {
-        string memory n = chainNameOf[chainid];
+    function addChain(string memory chainName, uint256 chainId) public {
+        string memory n = chainNameOf[chainId];
         if (bytes(n).length != 0) {
-            revert(string(abi.encodePacked("Already add: ", vm.toString(chainid))));
+            revert AlreadAddedChainId(chainId);
         }
         uint256 id = chainIdOf[chainName];
         if (id != 0) {
-            revert(string(abi.encodePacked("Already add: ", chainName)));
+            revert AlreadAddedChainName(chainName);
         }
 
-        chainIdOf[chainName] = chainid;
-        chainNameOf[chainid] = chainName;
+        chainIdOf[chainName] = chainId;
+        chainNameOf[chainId] = chainName;
     }
 
-    function toChainName(uint256 chainid) public view returns (string memory name) {
-        name = chainNameOf[chainid];
+    function toChainName(uint256 chainId)
+        public
+        view
+        returns (string memory name)
+    {
+        name = chainNameOf[chainId];
         if (bytes(name).length == 0) {
-            revert(string(abi.encodePacked("No network found with the chain ID: ", vm.toString(chainid))));
+            revert NotFoundChainId(chainId);
         }
     }
 
-    function toChainId(string memory chainName) public view returns (uint256 chainid) {
-        chainid = chainIdOf[chainName];
-        if (chainid == 0) {
-            revert(string(abi.encodePacked("No network found with the chain name: ", chainName)));
+    function toChainId(string memory chainName)
+        public
+        view
+        returns (uint256 chainId)
+    {
+        chainId = chainIdOf[chainName];
+        if (chainId == 0) {
+            revert NotFoundChainName(chainName);
         }
     }
 
-    function isL2(uint256 chainid) internal pure returns (bool) {
-        if (chainid == Ethereum) return false;
+    function isL2(uint256 chainId) internal pure returns (bool) {
+        if (chainId == Ethereum) return false;
         else return true;
     }
 }

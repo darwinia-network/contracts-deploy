@@ -2,25 +2,21 @@
 pragma solidity 0.8.17;
 
 import {Base} from "./Base.sol";
-import {Chains} from "./Chains.sol";
+import {OracleConfig} from "./OracleConfig.sol";
 
 import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
 // Msgport
 import "../src/Msgport.sol";
 
-contract ConnectTestScript is Chains, Base {
+contract ConnectTestScript is Base, OracleConfig {
     using SafeCast for uint256;
 
     Oracle oracle = Oracle(payable(0xDD8c7c84DaCBbB60F1CfC4f10046245da1E0f33D));
-    Relayer relayer = Relayer(payable(0xb773319D6Eb7f34b8EAB26Ea5F5ea694E7EF6362));
-    ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0x7e829b7969a5d09A75E0A6F27f306b8C89641C9d);
-
-    // Oracle config
-    uint256 priceMultiplier = 1e9;
-    uint256 ethPrice = 3600 * priceMultiplier;
-    uint256 ringPrice = priceMultiplier / 200;
-    uint256 gasPrice = 25 gwei;
+    Relayer relayer =
+        Relayer(payable(0xb773319D6Eb7f34b8EAB26Ea5F5ea694E7EF6362));
+    ORMPUpgradeablePort ormpUpgradeablePort =
+        ORMPUpgradeablePort(0x7e829b7969a5d09A75E0A6F27f306b8C89641C9d);
 
     // Relayer config
     uint64 gasPerByte = 16;
@@ -29,155 +25,45 @@ contract ConnectTestScript is Chains, Base {
         string[] memory testnets = sphinxConfig.testnets;
         uint256 len = testnets.length;
         for (uint256 i = 0; i < len; i++) {
-            setOracleFee();
-            setRelayerFee();
-            setPortLookup();
+            uint256 chainId = toChaindId(testnets[i]);
+            if (block.chainId != chainId) continue;
+            setOracleFee(chainId);
+            setRelayerFee(chainId);
+            setPortLookup(chainId);
         }
     }
 
-    function setOracleFee() internal {
-        setSepoliaOracleFee();
-        setArbitrumSepoliaOracleFee();
-        setTaikoKatlaOracleFee();
-        setPangolinOracleFee();
-    }
-
-    function setRelayerFee() internal {
-        setSepoliaRelayerFee();
-        setArbitrumSepoliaRelayerFee();
-        setTaikoKatlaRelayerFee();
-        setPangolinRelayerFee();
-    }
-
-    function setSepoliaOracleFee() internal {
-        uint256 gas = 110000;
-        uint256 usd = gas * gasPrice * ethPrice;
-        if (block.chainid == Chains.Sepolia) {
-            return;
-        }
-        if (block.chainid == Chains.ArbitrumSepolia || block.chainid == Chains.TaikoKatla) {
-            _setOracleFee(Chains.Sepolia, gas * gasPrice);
-        }
-        if (block.chainid == Chains.Pangolin) {
-            _setOracleFee(Chains.Sepolia, usd / ringPrice);
+    function setOracleFee(uint256 localChainId) internal {
+        string[] memory testnets = sphinxConfig.testnets;
+        uint256 len = testnets.length;
+        for (uint256 i = 0; i < len; i++) {
+            uint256 remoteChainId = toChaindId(testnets[i]);
+            if (remoteChainId == localChainId) continue;
+            _setOracleFee(localChainId, remoteChainId);
+            _setRelayerFee(localChainId, remoteChainId);
         }
     }
 
-    function setArbitrumSepoliaOracleFee() internal {
-        uint256 gas = 110000 / 100;
-        uint256 usd = gas * gasPrice * ethPrice;
-        if (block.chainid == Chains.ArbitrumSepolia) {
-            return;
-        }
-        if (block.chainid == Chains.Sepolia || block.chainid == Chains.ArbitrumSepolia) {
-            _setOracleFee(Chains.ArbitrumSepolia, gas * gasPrice);
-        }
-        if (block.chainid == Chains.Pangolin) {
-            _setOracleFee(Chains.ArbitrumSepolia, usd / ringPrice);
-        }
-    }
-
-    function setPangolinOracleFee() internal {
-        uint256 gas = 110000;
-        uint256 usd = gas * gasPrice * ringPrice;
-        if (block.chainid == Chains.Pangolin) {
-            return;
-        }
-        if (
-            block.chainid == Chains.Sepolia || block.chainid == Chains.ArbitrumSepolia
-                || block.chainid == Chains.TaikoKatla
-        ) {
-            _setOracleFee(Chains.Pangolin, usd / ethPrice);
-        }
-    }
-
-    function setTaikoKatlaOracleFee() internal {
-        uint256 gas = 110000 / 100;
-        uint256 usd = gas * gasPrice * ethPrice;
-        if (block.chainid == Chains.TaikoKatla) {
-            return;
-        }
-        if (block.chainid == Chains.Sepolia || block.chainid == Chains.ArbitrumSepolia) {
-            _setOracleFee(Chains.TaikoKatla, gas * gasPrice);
-        }
-        if (block.chainid == Chains.Pangolin) {
-            _setOracleFee(Chains.TaikoKatla, usd / ringPrice);
-        }
-    }
-
-    function _setOracleFee(uint256 chainId, uint256 fee) internal {
-        if (fee != oracle.feeOf(chainId)) {
-            oracle.setFee(chainId, fee);
-        }
-    }
-
-    function setSepoliaRelayerFee() internal {
-        uint64 baseGas = 120000;
-        uint128 dstGasPriceInWei = 40 gwei;
-        if (block.chainid == Chains.Sepolia) {
-            return;
-        }
-        if (block.chainid == Chains.ArbitrumSepolia || block.chainid == Chains.TaikoKatla) {
-            uint128 dstPriceRatio = 1e10;
-            _setRelayerFee(Chains.Sepolia, dstPriceRatio, dstGasPriceInWei, baseGas);
-        }
-        if (block.chainid == Chains.Pangolin) {
-            uint256 dstPriceRatio = ethPrice * 1e10 / ringPrice;
-            _setRelayerFee(Chains.Sepolia, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
-        }
-    }
-
-    function setArbitrumSepoliaRelayerFee() internal {
-        uint64 baseGas = 1;
-        uint128 dstGasPriceInWei = 110000000;
-        if (block.chainid == Chains.ArbitrumSepolia) {
-            return;
-        }
-        if (block.chainid == Chains.Sepolia || block.chainid == Chains.TaikoKatla) {
-            uint128 dstPriceRatio = 1e10;
-            _setRelayerFee(Chains.ArbitrumSepolia, dstPriceRatio, dstGasPriceInWei, baseGas);
-        }
-        if (block.chainid == Chains.Pangolin) {
-            uint256 dstPriceRatio = ethPrice * 1e10 / ringPrice;
-            _setRelayerFee(Chains.ArbitrumSepolia, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
-        }
-    }
-
-    function setTaikoKatlaRelayerFee() internal {
-        uint64 baseGas = 200000;
-        // TODO: check
-        uint128 dstGasPriceInWei = 9;
-        if (block.chainid == Chains.TaikoKatla) {
-            return;
-        }
-        if (block.chainid == Chains.Sepolia || block.chainid == Chains.ArbitrumSepolia) {
-            uint128 dstPriceRatio = 1e10;
-            _setRelayerFee(Chains.TaikoKatla, dstPriceRatio, dstGasPriceInWei, baseGas);
-        }
-        if (block.chainid == Chains.Pangolin) {
-            uint256 dstPriceRatio = ethPrice * 1e10 / ringPrice;
-            _setRelayerFee(Chains.TaikoKatla, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
-        }
-    }
-
-    function setPangolinRelayerFee() internal {
-        uint64 baseGas = 200000;
-        uint128 dstGasPriceInWei = 180000000000;
-        if (block.chainid == Chains.Pangolin) {
-            return;
-        }
-        if (
-            block.chainid == Chains.Sepolia || block.chainid == Chains.ArbitrumSepolia
-                || block.chainid == Chains.TaikoKatla
-        ) {
-            uint256 dstPriceRatio = ringPrice * 1e10 / ethPrice;
-            _setRelayerFee(Chains.Sepolia, dstPriceRatio.toUint128(), dstGasPriceInWei, baseGas);
-        }
-    }
-
-    function _setRelayerFee(uint256 chainId, uint128 dstPriceRatio, uint128 dstGasPriceInWei, uint64 baseGas)
+    function _setOracleFee(uint256 localChainId, uint256 remoteChainId)
         internal
     {
+        if (block.chainId != localChainId) return;
+        uint256 fee = getOracleConfig(localChainId, remoteChainId);
+        if (fee != oracle.feeOf(remoteChainId)) {
+            oracle.setFee(remoteChainId, fee);
+        }
+    }
+
+    function _setRelayerFee(uint256 localChainId, uint256 remoteChainId)
+        internal
+    {
+        (
+            uint128 dstPriceRatio,
+            uint128 dstGasPriceInWei,
+            uint64 baseGas,
+            uint64 gasPerByte
+        ) = getRelayerConfig(localChainId, remoteChainId);
+
         (uint128 ratio, uint128 price) = relayer.priceOf(chainId);
         if (ratio != dstPriceRatio || price != dstGasPriceInWei) {
             relayer.setDstPrice(chainId, dstPriceRatio, dstGasPriceInWei);

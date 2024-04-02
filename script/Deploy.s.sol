@@ -44,7 +44,8 @@ contract DeployScript is Base {
 
     function deploySubAPIMultiSig() internal {
         bytes memory byteCode = type(SubAPIMultiSig).creationCode;
-        bytes memory initCode = bytes.concat(byteCode, abi.encode(signers, quorum));
+        bytes memory initCode =
+            bytes.concat(byteCode, abi.encode(signers, quorum));
         subapiMultisig = computeAddress(salt, hash(initCode));
         if (subapiMultisig.code.length == 0) {
             subapiMultisig = _deploy2(salt, initCode);
@@ -122,12 +123,14 @@ contract DeployScript is Base {
     function deployORMPUPort() internal {
         string memory name = "ORMP-U";
         bytes memory byteCode = type(ORMPUpgradeablePort).creationCode;
-        bytes memory initCode = bytes.concat(byteCode, abi.encode(dao, ormp, name));
+        bytes memory initCode =
+            bytes.concat(byteCode, abi.encode(dao, ormp, name));
         ormpUpgradeablePort = computeAddress(salt, hash(initCode));
         if (ormpUpgradeablePort.code.length == 0) {
             ormpUpgradeablePort = _deploy2(salt, initCode);
         }
-        string memory uri = "ipfs://bafybeifa7fgeb63rnashodi5k27fxfqfc65hdbyjum5aiqtd2xjeno2dgy";
+        string memory uri =
+            "ipfs://bafybeifa7fgeb63rnashodi5k27fxfqfc65hdbyjum5aiqtd2xjeno2dgy";
         string memory u = ORMPUpgradeablePort(ormpUpgradeablePort).uri();
         if (hash(uri) != hash(u)) {
             ORMPUpgradeablePort(ormpUpgradeablePort).setURI(uri);
