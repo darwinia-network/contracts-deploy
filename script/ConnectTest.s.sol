@@ -41,6 +41,7 @@ contract ConnectTestScript is Base, OracleConfig {
             if (remoteChainId == localChainId) continue;
             _setOracleFee(localChainId, remoteChainId);
             _setRelayerFee(localChainId, remoteChainId);
+            _setPortLookup(localChainId, remoteChainId);
         }
     }
 
@@ -57,6 +58,7 @@ contract ConnectTestScript is Base, OracleConfig {
     function _setRelayerFee(uint256 localChainId, uint256 remoteChainId)
         internal
     {
+        if (block.chainId != localChainId) return;
         (
             uint128 dstPriceRatio,
             uint128 dstGasPriceInWei,
@@ -64,46 +66,26 @@ contract ConnectTestScript is Base, OracleConfig {
             uint64 gasPerByte
         ) = getRelayerConfig(localChainId, remoteChainId);
 
-        (uint128 ratio, uint128 price) = relayer.priceOf(chainId);
+        (uint128 ratio, uint128 price) = relayer.priceOf(remoteChainId);
         if (ratio != dstPriceRatio || price != dstGasPriceInWei) {
-            relayer.setDstPrice(chainId, dstPriceRatio, dstGasPriceInWei);
+            relayer.setDstPrice(remoteChainId, dstPriceRatio, dstGasPriceInWei);
         }
-        (uint64 b, uint64 g) = relayer.configOf(chainId);
+        (uint64 b, uint64 g) = relayer.configOf(remoteChainId);
         if (b != baseGas || g != gasPerByte) {
-            relayer.setDstConfig(chainId, baseGas, gasPerByte);
+            relayer.setDstConfig(remoteChainId, baseGas, gasPerByte);
         }
     }
 
-    function setPortLookup() internal {
-        if (block.chainid == Chains.Sepolia) {
-            _setPortLookup(Chains.ArbitrumSepolia);
-            _setPortLookup(Chains.TaikoKatla);
-            _setPortLookup(Chains.Pangolin);
-        }
-        if (block.chainid == Chains.ArbitrumSepolia) {
-            _setPortLookup(Chains.Sepolia);
-            _setPortLookup(Chains.TaikoKatla);
-            _setPortLookup(Chains.Pangolin);
-        }
-        if (block.chainid == Chains.TaikoKatla) {
-            _setPortLookup(Chains.Sepolia);
-            _setPortLookup(Chains.ArbitrumSepolia);
-            _setPortLookup(Chains.Pangolin);
-        }
-        if (block.chainid == Chains.Pangolin) {
-            _setPortLookup(Chains.Sepolia);
-            _setPortLookup(Chains.ArbitrumSepolia);
-            _setPortLookup(Chains.TaikoKatla);
-        }
-    }
-
-    function _setPortLookup(uint256 chainId) internal {
+    function _setPortLookup(uint256 localChainId, uint256 remoteChainId)
+        internal
+    {
+        if (block.chainId != localChainId) return;
         address port = address(ormpUpgradeablePort);
-        if (port != ormpUpgradeablePort.fromPortLookup(chainId)) {
-            ormpUpgradeablePort.setFromPort(chainId, port);
+        if (port != ormpUpgradeablePort.fromPortLookup(remoteChainId)) {
+            ormpUpgradeablePort.setFromPort(remoteChainId, port);
         }
-        if (port != ormpUpgradeablePort.toPortLookup(chainId)) {
-            ormpUpgradeablePort.setToPort(chainId, port);
+        if (port != ormpUpgradeablePort.toPortLookup(remoteChainId)) {
+            ormpUpgradeablePort.setToPort(remoteChainId, port);
         }
     }
 }
