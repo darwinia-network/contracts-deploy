@@ -80,6 +80,20 @@ contract Chains {
         chainNameOf[OptimismSepolia] = "optimism_sepolia";
     }
 
+    function addChain(string memory chainName, uint256 chainid) public {
+        string memory n = chainNameOf[chainid];
+        if (bytes(n).length != 0) {
+            revert(string(abi.encodePacked("Already add: ", vm.toString(chainid))));
+        }
+        uint256 id = chainIdOf[chainName];
+        if (id != 0) {
+            revert(string(abi.encodePacked("Already add: ", chainName)));
+        }
+
+        chainIdOf[chainName] = chainid;
+        chainNameOf[chainid] = chainName;
+    }
+
     function toChainName(uint256 chainid) public view returns (string memory name) {
         name = chainNameOf[chainid];
         if (bytes(name).length == 0) {
