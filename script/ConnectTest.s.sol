@@ -9,8 +9,7 @@ import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 // Msgport
 import "../src/Msgport.sol";
 
-contract ConnectTestScript is Base {
-    using Chains for uint256;
+contract ConnectTestScript is Chains, Base {
     using SafeCast for uint256;
 
     Oracle oracle = Oracle(payable(0xDD8c7c84DaCBbB60F1CfC4f10046245da1E0f33D));
@@ -27,9 +26,13 @@ contract ConnectTestScript is Base {
     uint64 gasPerByte = 16;
 
     function run() public sphinx {
-        setOracleFee();
-        setRelayerFee();
-        setPortLookup();
+		string[] memory testnets = sphinxConfig.testnets;
+		uint len = testnets.length;
+		for (uint i = 0; i < len; i++) {
+			setOracleFee();
+			setRelayerFee();
+			setPortLookup();
+		}
     }
 
     function setOracleFee() internal {
