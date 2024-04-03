@@ -5,6 +5,7 @@ libs = ["lib"]
 sender = "0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f"
 force = false
 optimizer = true
+verbosity = 5
 auto_detect_remappings = false
 optimizer_runs = 999999
 evm_version = "london"
@@ -15,6 +16,7 @@ fs_permissions = [
   { "access" = "read-write", "path" = "./cache"},
   { "access" = "read-write", "path" = "./out" },
   { "access" = "read-write", "path" = "./deployments/" },
+  { "access" = "read", "path" = "./script/input/" },
 ]
 
 [rpc_endpoints]
@@ -25,6 +27,6 @@ taiko_katla = "https://rpc.katla.taiko.xyz"
 
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}"}
-arbitrum-sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}"}
+arbitrum_sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}"}
 pangolin = { key = "", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
-taiko-katla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/1/etherscan/api"}
+taiko_katla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/1/etherscan/api"}

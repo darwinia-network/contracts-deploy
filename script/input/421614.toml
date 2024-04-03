@@ -1,0 +1,37 @@
+[local]
+name = "Arbitrum One Sepolia"
+chainId = 421614
+chainAlias = "arbitrum_sepolia"
+rpcUrl = "https://sepolia-rollup.arbitrum.io/rpc" 
+
+[remote]
+chains = [11155111,43,167008]
+
+[oracle]
+[oracle.11155111]
+fee = 27500000000000001
+
+[oracle.43]
+fee = 50000000000
+
+[oracle.167008]
+fee = 27500000000000
+
+[relayer]
+[relayer.11155111]
+dstPriceRatio = 10000000000 
+dstGasPriceInWei = 25000000000
+baseGas = 120000
+gasPerByte = 16
+
+[relayer.43]
+dstPriceRatio = 13888 
+dstGasPriceInWei = 160000000000 
+baseGas = 200000
+gasPerByte = 16
+
+[relayer.167008]
+dstPriceRatio = 10000000000 
+dstGasPriceInWei = 10
+baseGas = 120000
+gasPerByte = 16

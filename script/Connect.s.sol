@@ -2,37 +2,51 @@
 pragma solidity 0.8.17;
 
 import {Base} from "./Base.sol";
-import {ChainsConfig} from "./ChainsConfig.sol";
+import {ScriptTools} from "./ScriptTools.sol";
 import {OracleConfig} from "./OracleConfig.sol";
 import {RelayerConfig} from "./RelayerConfig.sol";
 
-import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
+import {safeconsole} from "forge-std/safeconsole.sol";
 
 // Msgport
 import "../src/Msgport.sol";
 
-contract ConnectTestScript is Base, ChainsConfig, OracleConfig, RelayerConfig {
-    using SafeCast for uint256;
-
+contract ConnectScript is Base, OracleConfig, RelayerConfig {
     Oracle oracle = Oracle(payable(0xDD8c7c84DaCBbB60F1CfC4f10046245da1E0f33D));
     Relayer relayer = Relayer(payable(0xb773319D6Eb7f34b8EAB26Ea5F5ea694E7EF6362));
     ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0x7e829b7969a5d09A75E0A6F27f306b8C89641C9d);
 
-    function run() public sphinx {
-        string[] memory testnets = sphinxConfig.testnets;
-        uint256 len = testnets.length;
-        for (uint256 i = 0; i < len; i++) {
-            uint256 chainId = toChainId(testnets[i]);
-            if (block.chainid != chainId) continue;
-            connect(chainId);
+    string[] networks;
+
+    function setUp() public {
+        if (block.chainid == 31337) {
+            return;
         }
+        uint256 local = block.chainid;
+        string memory config = ScriptTools.loadConfig(vmSafe.toString(local));
+        init(local, config);
+    }
+
+    function init(uint256 local, string memory config) public override(Base, OracleConfig, RelayerConfig) {
+        Base.init(local, config);
+        OracleConfig.init(local, config);
+        RelayerConfig.init(local, config);
+    }
+
+    function run() public sphinx {
+        bool isTest = vmSafe.envOr("IS_TEST", true);
+        if (isTest) {
+            networks = sphinxConfig.testnets;
+        } else {
+            networks = sphinxConfig.mainnets;
+        }
+        connect(block.chainid);
     }
 
     function connect(uint256 localChainId) internal {
-        string[] memory testnets = sphinxConfig.testnets;
-        uint256 len = testnets.length;
+        uint256 len = networks.length;
         for (uint256 i = 0; i < len; i++) {
-            uint256 remoteChainId = toChainId(testnets[i]);
+            uint256 remoteChainId = getChain(networks[i]).chainId;
             if (remoteChainId == localChainId) continue;
             _setOracleFee(localChainId, remoteChainId);
             _setRelayerFee(localChainId, remoteChainId);

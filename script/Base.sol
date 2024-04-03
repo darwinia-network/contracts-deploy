@@ -2,9 +2,23 @@
 pragma solidity 0.8.17;
 
 import "@sphinx-labs/contracts/SphinxPlugin.sol";
+import {Script} from "forge-std/Script.sol";
+import {stdToml} from "forge-std/StdToml.sol";
 
-abstract contract Base is Sphinx {
+abstract contract Base is Script, Sphinx {
+    using stdToml for string;
+
     address immutable SAFE_CREATE2_ADDR = 0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7;
+
+    function init(uint256 local, string memory config) public virtual {
+        string memory name = config.readString(".local.name");
+        uint256 chainId = config.readUint(".local.chainId");
+        require(local == chainId, "!chainId");
+        string memory chainAlias = config.readString(".local.chainAlias");
+        string memory rpcUrl = config.readString(".local.rpcUrl");
+        Chain memory chain = Chain(name, chainId, chainAlias, rpcUrl);
+        setChain(chainAlias, chain);
+    }
 
     function configureSphinx() public override {
         sphinxConfig.owners = [0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f];
@@ -12,7 +26,8 @@ abstract contract Base is Sphinx {
         sphinxConfig.projectName = "Msgport";
         sphinxConfig.threshold = 1;
         // sphinxConfig.testnets = ["sepolia", "pangolin", "arbitrum_sepolia", "taiko_katla"];
-        sphinxConfig.testnets = ["sepolia", "arbitrum_sepolia"];
+        sphinxConfig.testnets = ["sepolia", "arbitrum_sepolia", "taiko_katla"];
+        // sphinxConfig.mainnets = [];
     }
 
     function _deploy2(bytes32 salt, bytes memory initCode) internal returns (address) {
@@ -40,5 +55,10 @@ abstract contract Base is Sphinx {
 
     function hash(string memory data) internal pure returns (bytes32) {
         return hash(bytes(data));
+    }
+
+    function isL2(uint256 chainId) internal pure returns (bool) {
+        if (chainId == 1) return false;
+        else return true;
     }
 }

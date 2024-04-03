@@ -1,9 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./Constants.sol";
+import {VmSafe} from "forge-std/Vm.sol";
+import {stdToml} from "forge-std/stdToml.sol";
+import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-contract RelayerConfig is Constants {
+contract RelayerConfig {
+    using stdToml for string;
+    using SafeCast for uint256;
+
+    VmSafe private constant vm = VmSafe(address(uint160(uint256(keccak256("hevm cheat code")))));
+
     struct Config {
         uint128 dstPriceRatio; // dstPrice / localPrice * 10^10
         uint128 dstGasPriceInWei;
@@ -16,21 +23,29 @@ contract RelayerConfig is Constants {
 
     error NotFoundRelayerConfig(uint256 local, uint256 remote);
 
-    constructor() {
-        configOf[ArbitrumSepolia][Sepolia] =
-            Config({dstPriceRatio: 10000000000, dstGasPriceInWei: 25000000000, baseGas: 120000, gasPerByte: 16});
-        configOf[Pangolin][Sepolia] =
-            Config({dstPriceRatio: 7200000000000000, dstGasPriceInWei: 25000000000, baseGas: 120000, gasPerByte: 16});
-
-        configOf[Sepolia][ArbitrumSepolia] =
-            Config({dstPriceRatio: 10000000000, dstGasPriceInWei: 110000000, baseGas: 1, gasPerByte: 16});
-        configOf[Pangolin][ArbitrumSepolia] =
-            Config({dstPriceRatio: 7200000000000000, dstGasPriceInWei: 110000000, baseGas: 1, gasPerByte: 16});
-
-        configOf[Sepolia][Pangolin] =
-            Config({dstPriceRatio: 13888, dstGasPriceInWei: 160000000000, baseGas: 200000, gasPerByte: 16});
-        configOf[ArbitrumSepolia][Pangolin] =
-            Config({dstPriceRatio: 13888, dstGasPriceInWei: 160000000000, baseGas: 200000, gasPerByte: 16});
+    function init(uint256 local, string memory config) public virtual {
+        uint256[] memory remotes = config.readUintArray(".remote.chains");
+        uint256 len = remotes.length;
+        for (uint256 i = 0; i < len; i++) {
+            uint256 remote = remotes[i];
+            string memory key = string.concat(".relayer.", vm.toString(remote));
+            string memory key1 = string.concat(key, ".dstPriceRatio");
+            string memory key2 = string.concat(key, ".dstGasPriceInWei");
+            string memory key3 = string.concat(key, ".baseGas");
+            string memory key4 = string.concat(key, ".gasPerByte");
+            uint256 dstPriceRatio = config.readUint(key1);
+            uint256 dstGasPriceInWei = config.readUint(key2);
+            uint256 baseGas = config.readUint(key3);
+            uint256 gasPerByte = config.readUint(key4);
+            setRelayerConfig(
+                local,
+                remote,
+                dstPriceRatio.toUint128(),
+                dstGasPriceInWei.toUint128(),
+                baseGas.toUint64(),
+                gasPerByte.toUint64()
+            );
+        }
     }
 
     function setRelayerConfig(

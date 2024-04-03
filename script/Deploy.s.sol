@@ -8,6 +8,7 @@ import "../src/Msgport.sol";
 
 contract DeployScript is Base {
     bytes32 salt = bytes32(uint256(1));
+
     address[] signers = [
         0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77,
         0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85,
@@ -18,7 +19,7 @@ contract DeployScript is Base {
     uint64 quorum = 3;
 
     address dao;
-    address subapiMultisig;
+    address subapiMultisig = 0x000000000d60704384100A29efb6C9cf8cD72820;
     address ormp;
     address oracle;
     address relayer;
@@ -28,7 +29,7 @@ contract DeployScript is Base {
         dao = safeAddress();
 
         // Deploy SubAPIMultiSig
-        deploySubAPIMultiSig();
+        // deploySubAPIMultiSig();
 
         // Deploy ORMP
         deployORMP();
