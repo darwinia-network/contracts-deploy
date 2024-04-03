@@ -20,17 +20,11 @@ contract OracleConfig is Constants {
         oracleFeeOf[ArbitrumSepolia][Pangolin] = 50000000000;
     }
 
-    function setOracleConfig(uint256 local, uint256 remote, uint256 fee)
-        public
-    {
+    function setOracleConfig(uint256 local, uint256 remote, uint256 fee) public {
         oracleFeeOf[local][remote] = fee;
     }
 
-    function getOracleConfig(uint256 local, uint256 remote)
-        public
-        view
-        returns (uint256 fee)
-    {
+    function getOracleConfig(uint256 local, uint256 remote) public view returns (uint256 fee) {
         fee = oracleFeeOf[local][remote];
         if (fee == 0) revert NotFoundOracleConfig(local, remote);
     }

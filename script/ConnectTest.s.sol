@@ -11,19 +11,12 @@ import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 // Msgport
 import "../src/Msgport.sol";
 
-contract ConnectTestScript is
-    Base,
-    ChainsConfig,
-    OracleConfig,
-    RelayerConfig
-{
+contract ConnectTestScript is Base, ChainsConfig, OracleConfig, RelayerConfig {
     using SafeCast for uint256;
 
     Oracle oracle = Oracle(payable(0xDD8c7c84DaCBbB60F1CfC4f10046245da1E0f33D));
-    Relayer relayer =
-        Relayer(payable(0xb773319D6Eb7f34b8EAB26Ea5F5ea694E7EF6362));
-    ORMPUpgradeablePort ormpUpgradeablePort =
-        ORMPUpgradeablePort(0x7e829b7969a5d09A75E0A6F27f306b8C89641C9d);
+    Relayer relayer = Relayer(payable(0xb773319D6Eb7f34b8EAB26Ea5F5ea694E7EF6362));
+    ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0x7e829b7969a5d09A75E0A6F27f306b8C89641C9d);
 
     function run() public sphinx {
         string[] memory testnets = sphinxConfig.testnets;
@@ -47,9 +40,7 @@ contract ConnectTestScript is
         }
     }
 
-    function _setOracleFee(uint256 localChainId, uint256 remoteChainId)
-        internal
-    {
+    function _setOracleFee(uint256 localChainId, uint256 remoteChainId) internal {
         if (block.chainid != localChainId) return;
         uint256 fee = getOracleConfig(localChainId, remoteChainId);
         if (fee != oracle.feeOf(remoteChainId)) {
@@ -57,17 +48,13 @@ contract ConnectTestScript is
         }
     }
 
-    function _setRelayerFee(uint256 localChainId, uint256 remoteChainId)
-        internal
-    {
+    function _setRelayerFee(uint256 localChainId, uint256 remoteChainId) internal {
         if (block.chainid != localChainId) return;
         Config memory c = getRelayerConfig(localChainId, remoteChainId);
 
         (uint128 ratio, uint128 price) = relayer.priceOf(remoteChainId);
         if (ratio != c.dstPriceRatio || price != c.dstGasPriceInWei) {
-            relayer.setDstPrice(
-                remoteChainId, c.dstPriceRatio, c.dstGasPriceInWei
-            );
+            relayer.setDstPrice(remoteChainId, c.dstPriceRatio, c.dstGasPriceInWei);
         }
         (uint64 b, uint64 g) = relayer.configOf(remoteChainId);
         if (b != c.baseGas || g != c.gasPerByte) {
@@ -75,9 +62,7 @@ contract ConnectTestScript is
         }
     }
 
-    function _setPortLookup(uint256 localChainId, uint256 remoteChainId)
-        internal
-    {
+    function _setPortLookup(uint256 localChainId, uint256 remoteChainId) internal {
         if (block.chainid != localChainId) return;
         address port = address(ormpUpgradeablePort);
         if (port != ormpUpgradeablePort.fromPortLookup(remoteChainId)) {

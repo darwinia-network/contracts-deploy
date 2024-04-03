@@ -80,22 +80,14 @@ contract ChainsConfig is Constants {
         chainNameOf[chainId] = chainName;
     }
 
-    function toChainName(uint256 chainId)
-        public
-        view
-        returns (string memory name)
-    {
+    function toChainName(uint256 chainId) public view returns (string memory name) {
         name = chainNameOf[chainId];
         if (bytes(name).length == 0) {
             revert NotFoundChainId(chainId);
         }
     }
 
-    function toChainId(string memory chainName)
-        public
-        view
-        returns (uint256 chainId)
-    {
+    function toChainId(string memory chainName) public view returns (uint256 chainId) {
         chainId = chainIdOf[chainName];
         if (chainId == 0) {
             revert NotFoundChainName(chainName);
