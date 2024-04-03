@@ -2,22 +2,27 @@
 pragma solidity 0.8.17;
 
 import "@sphinx-labs/contracts/SphinxPlugin.sol";
+import {SphinxConstants, NetworkInfo} from "@sphinx-labs/contracts/SphinxConstants.sol";
 import {Script} from "forge-std/Script.sol";
 import {stdToml} from "forge-std/StdToml.sol";
 
-abstract contract Base is Script, Sphinx {
+abstract contract Base is Script, Sphinx, SphinxConstants {
     using stdToml for string;
 
     address immutable SAFE_CREATE2_ADDR = 0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7;
 
-    function init(uint256 local, string memory config) public virtual {
-        string memory name = config.readString(".local.name");
-        uint256 chainId = config.readUint(".local.chainId");
-        require(local == chainId, "!chainId");
-        string memory chainAlias = config.readString(".local.chainAlias");
-        string memory rpcUrl = config.readString(".local.rpcUrl");
-        Chain memory chain = Chain(name, chainId, chainAlias, rpcUrl);
-        setChain(chainAlias, chain);
+    function getChainId(string memory name) public pure returns (uint256 chaindId) {
+        return findNetworkInfoByName(name).chainId;
+    }
+
+    function findNetworkInfoByName(string memory _networkName) public pure returns (NetworkInfo memory) {
+        NetworkInfo[] memory all = getNetworkInfoArray();
+        for (uint256 i = 0; i < all.length; i++) {
+            if (keccak256(abi.encode(all[i].name)) == keccak256(abi.encode(_networkName))) {
+                return all[i];
+            }
+        }
+        revert(string(abi.encodePacked("Sphinx: No network found with the given name: ", _networkName)));
     }
 
     function configureSphinx() public override {

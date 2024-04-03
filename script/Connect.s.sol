@@ -27,8 +27,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         init(local, config);
     }
 
-    function init(uint256 local, string memory config) public override(Base, OracleConfig, RelayerConfig) {
-        Base.init(local, config);
+    function init(uint256 local, string memory config) public override(OracleConfig, RelayerConfig) {
         OracleConfig.init(local, config);
         RelayerConfig.init(local, config);
     }
@@ -46,7 +45,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
     function connect(uint256 localChainId) internal {
         uint256 len = networks.length;
         for (uint256 i = 0; i < len; i++) {
-            uint256 remoteChainId = getChain(networks[i]).chainId;
+            uint256 remoteChainId = getChainId(networks[i]);
             if (remoteChainId == localChainId) continue;
             _setOracleFee(localChainId, remoteChainId);
             _setRelayerFee(localChainId, remoteChainId);
