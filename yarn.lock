@@ -494,10 +494,6 @@
   resolved "https://registry.yarnpkg.com/@fastify/busboy/-/busboy-2.1.1.tgz#b9da6a878a371829a0502c9b6c1c143ef6663f4d"
   integrity sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==
 
-"@gnosis.pm/safe-contracts@git+https://github.com/safe-global/safe-contracts.git#767ef36bba88bdbc0c9fe3708a4290cabef4c376":
-  version "1.3.0"
-  resolved "git+https://github.com/safe-global/safe-contracts.git#767ef36bba88bdbc0c9fe3708a4290cabef4c376"
-
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz#7a0ee601f60f99a20c7c7c5ff0c80388c1189bd6"
@@ -1057,20 +1053,19 @@
   dependencies:
     tslib "^2.6.2"
 
-"@sphinx-labs/contracts@^0.20.8":
-  version "0.20.8"
-  resolved "https://registry.yarnpkg.com/@sphinx-labs/contracts/-/contracts-0.20.8.tgz#e12985f19f648ac37945c7948df5080342d07444"
-  integrity sha512-0MpyfJHqt/8y0+tRRJsZaGjf3QQ6hfJGs3Twx1nfeKvO5uGu2zKXhLPay7IhGgWV0fEI9Ra95V7mbCcLseXp4A==
+"@sphinx-labs/contracts@^0.21.0", "@sphinx-labs/contracts@^0.21.1":
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/@sphinx-labs/contracts/-/contracts-0.21.1.tgz#097b9f8d2b2294be303c7434d529b0d0c73b51d5"
+  integrity sha512-Nzm7oOLr0oBBv3ObtR3shx7wzfTYfDgLKLhGp8DHCJOaCSwQ0Fu21e9GWyHkdluLyABt6AHFyB9E8F+OhvlmUw==
   dependencies:
-    "@gnosis.pm/safe-contracts" "https://github.com/safe-global/safe-contracts.git#767ef36bba88bdbc0c9fe3708a4290cabef4c376"
     "@openzeppelin/contracts" "4.9.3"
     ethers "^6.7.0"
     solmate "6.2.0"
 
-"@sphinx-labs/core@^0.23.10":
-  version "0.23.10"
-  resolved "https://registry.yarnpkg.com/@sphinx-labs/core/-/core-0.23.10.tgz#bb736b400216da7cc9dfd1ed467103cefa259295"
-  integrity sha512-TfS5/Cx70kxk9Uti7Aw+EANyFZsbgAdt7yD3wwqMzphHxZZ4X91fMIIB6MVjHEXiqzmkBxnK8gwpBhFZ4b31SQ==
+"@sphinx-labs/core@^0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@sphinx-labs/core/-/core-0.24.0.tgz#8410b35b46478c52e532333834e2d50138807f6b"
+  integrity sha512-4de8m3XPRrqf/QbE0k9yrElxQ23B1SL3Y/BFdP5wvFlsgP4aq7QlEPoSsIcoH4UDzHOBuWcwaiuFiYtL17uyMw==
   dependencies:
     "@amplitude/node" "^1.10.2"
     "@eth-optimism/common-ts" "^0.7.1"
@@ -1079,7 +1074,7 @@
     "@nomicfoundation/hardhat-verify" "^2.0.2"
     "@openzeppelin/hardhat-upgrades" "^1.22.1"
     "@openzeppelin/merkle-tree" "1.0.5"
-    "@sphinx-labs/contracts" "^0.20.8"
+    "@sphinx-labs/contracts" "^0.21.0"
     axios "^1.4.0"
     chalk "^4.1.2"
     core-js "^3.27.1"
@@ -1095,18 +1090,18 @@
     undici "^5.21.1"
     yesno "^0.4.0"
 
-"@sphinx-labs/plugins@^0.30.12":
-  version "0.30.12"
-  resolved "https://registry.yarnpkg.com/@sphinx-labs/plugins/-/plugins-0.30.12.tgz#8d3d35cc0f33964f93fbbf08b46409d942c21475"
-  integrity sha512-Hkux+6xy6FBuV+kOmYpCqFWhTun/FheyZEzgchmjIIadEm98wGqU2M6KuxqH+DdjROisnBxLCSXOcPm4UZTATw==
+"@sphinx-labs/plugins@0.31.1":
+  version "0.31.1"
+  resolved "https://registry.yarnpkg.com/@sphinx-labs/plugins/-/plugins-0.31.1.tgz#27669f8eae66e36b7e07040af33c33ebc5ebe75d"
+  integrity sha512-nGVd2OjW+ZQdg/Yk3Ljx9WUOzlA6smSHIvKwJmuT+eKkOaDnDpCp3NShCXjRLn14RGxBTFignjt2A98c8baanw==
   dependencies:
     "@eth-optimism/contracts" "^0.5.40"
     "@ethersproject/bignumber" "^5.7.0"
     "@nomicfoundation/hardhat-ethers" "^3.0.5"
     "@openzeppelin/contracts" "^4.8.1"
     "@openzeppelin/hardhat-upgrades" "^1.22.1"
-    "@sphinx-labs/contracts" "^0.20.8"
-    "@sphinx-labs/core" "^0.23.10"
+    "@sphinx-labs/contracts" "^0.21.1"
+    "@sphinx-labs/core" "^0.24.0"
     "@swc/core" "1.3.75"
     chalk "^4.1.2"
     core-js "^3.31.1"
@@ -1119,8 +1114,6 @@
     semver "^7.3.7"
     sinon "^17.0.1"
     solidity-ast "^0.4.52"
-    sphinx-forge-std "https://github.com/foundry-rs/forge-std.git#v1.7.1"
-    sphinx-solmate "npm:solmate@^6.7.0"
     stream-chain "^2.2.5"
     stream-json "^1.8.0"
     ts-node "^10.9.1"
@@ -4682,15 +4675,6 @@ source-map@^0.6.0, source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
-
-"sphinx-forge-std@git+https://github.com/foundry-rs/forge-std.git#v1.7.1":
-  version "1.7.1"
-  resolved "git+https://github.com/foundry-rs/forge-std.git#f73c73d2018eb6a111f35e4dae7b4f27401e9421"
-
-"sphinx-solmate@npm:solmate@^6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/solmate/-/solmate-6.7.0.tgz#5e07b62498babec273aceb322a3e45d0e058e042"
-  integrity sha512-iMPr+gKbKjXBB12a+Iz5Tua5r7T4yugHaGXDWSJbBZB4Gr3vLeUUvKeLyMxCWWqk1xlLhFDFFuAmOzeyVBuyvQ==
 
 split2@^3.1.1:
   version "3.2.2"
