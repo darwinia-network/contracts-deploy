@@ -13,27 +13,12 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
 
     error CREATE2FactoryNotDeployed();
 
-    function getChainId(string memory name) public pure returns (uint256 chaindId) {
-        return findNetworkInfoByName(name).chainId;
-    }
-
-    function findNetworkInfoByName(string memory _networkName) public pure returns (NetworkInfo memory) {
-        NetworkInfo[] memory all = getNetworkInfoArray();
-        for (uint256 i = 0; i < all.length; i++) {
-            if (keccak256(abi.encode(all[i].name)) == keccak256(abi.encode(_networkName))) {
-                return all[i];
-            }
-        }
-        revert(string(abi.encodePacked("Sphinx: No network found with the given name: ", _networkName)));
-    }
-
     function configureSphinx() public override {
         sphinxConfig.owners = [0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f];
         sphinxConfig.orgId = "cluanacaw000111jik4xs4wkl";
         sphinxConfig.projectName = "Msgport";
         sphinxConfig.threshold = 1;
-        // sphinxConfig.testnets = ["sepolia", "pangolin", "arbitrum_sepolia", "taiko_katla"];
-        sphinxConfig.testnets = ["sepolia", "arbitrum_sepolia", "taiko_katla"];
+        sphinxConfig.testnets = ["sepolia", "darwinia_pangolin", "arbitrum_sepolia", "taiko_katla"];
         // sphinxConfig.mainnets = [];
         // sphinxConfig.saltNonce = 0;
     }
@@ -69,5 +54,19 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
     function isL2(uint256 chainId) internal pure returns (bool) {
         if (chainId == 1) return false;
         else return true;
+    }
+
+    function getChainId(string memory name) public pure returns (uint256 chaindId) {
+        return findNetworkInfoByName(name).chainId;
+    }
+
+    function findNetworkInfoByName(string memory _networkName) public pure returns (NetworkInfo memory) {
+        NetworkInfo[] memory all = getNetworkInfoArray();
+        for (uint256 i = 0; i < all.length; i++) {
+            if (keccak256(abi.encode(all[i].name)) == keccak256(abi.encode(_networkName))) {
+                return all[i];
+            }
+        }
+        revert(string(abi.encodePacked("Sphinx: No network found with the given name: ", _networkName)));
     }
 }

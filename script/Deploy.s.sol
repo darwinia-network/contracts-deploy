@@ -7,7 +7,7 @@ import {Base} from "./Base.sol";
 import "../src/Msgport.sol";
 
 contract DeployScript is Base {
-    bytes32 salt = bytes32(uint256(0));
+    bytes32 salt = bytes32(uint256(10));
 
     address[] signers = [
         0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77,
@@ -29,9 +29,11 @@ contract DeployScript is Base {
 
         // Deploy ORMPUpgradeablePort
         deployORMPUPort();
+
+        config();
     }
 
-    function config() public sphinx {
+    function config() public {
         configOracle();
         configRelayer();
         configORMP();
