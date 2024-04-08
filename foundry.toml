@@ -21,12 +21,12 @@ fs_permissions = [
 
 [rpc_endpoints]
 arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
-pangolin = "https://pangolin-rpc.darwinia.network"
+darwinia_pangolin = "https://pangolin-rpc.darwinia.network"
 sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
 taiko_katla = "https://rpc.katla.taiko.xyz"
 
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}"}
 arbitrum_sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}"}
-pangolin = { key = "", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
+darwinia_pangolin = { key = "", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
 taiko_katla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/1/etherscan/api"}

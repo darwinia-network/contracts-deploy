@@ -1,7 +1,7 @@
 [local]
 name = "Darwinia Pangolin"
 chainId = 43
-chainAlias = "pangolin"
+chainAlias = "darwinia_pangolin"
 rpcUrl = "https://pangolin-rpc.darwinia.network" 
 
 [remote]
