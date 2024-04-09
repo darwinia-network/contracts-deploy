@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {VmSafe} from "forge-std/Vm.sol";
-import {stdToml} from "forge-std/stdToml.sol";
+import {stdToml} from "forge-std/StdToml.sol";
 import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
 contract RelayerConfig {

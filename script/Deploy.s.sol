@@ -2,6 +2,7 @@
 pragma solidity 0.8.17;
 
 import {Base} from "./Base.sol";
+import {ScriptTools} from "./ScriptTools.sol";
 
 // Msgport
 import "../src/Msgport.sol";
@@ -78,59 +79,90 @@ contract DeployScript is Base {
     function deploySubAPIMultiSig() internal {
         bytes memory byteCode = type(SubAPIMultiSig).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(signers, quorum));
-        _deploy2(salt, initCode);
+        if (SUBAPIMULTISIG().code.length == 0) _deploy2(salt, initCode);
     }
 
     function deployORMP() internal {
         bytes memory byteCode = type(ORMP).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO()));
-        _deploy2(salt, initCode);
+        if (ORMPAddr().code.length == 0) _deploy2(salt, initCode);
     }
 
     function deployOracle() internal {
         bytes memory byteCode = type(Oracle).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), ORMPAddr()));
-        _deploy2(salt, initCode);
+        if (ORACLE().code.length == 0) _deploy2(salt, initCode);
     }
 
     function deployRelayer() internal {
         bytes memory byteCode = type(Relayer).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), ORMPAddr()));
-        _deploy2(salt, initCode);
+        if (RELAYER().code.length == 0) _deploy2(salt, initCode);
     }
 
     function deployORMPUPort() internal {
         string memory name = "ORMP-U";
         bytes memory byteCode = type(ORMPUpgradeablePort).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), ORMPAddr(), name));
-        _deploy2(salt, initCode);
+        if (ORMPUPORT().code.length == 0) _deploy2(salt, initCode);
     }
 
     function configOracle() internal {
         Oracle o = Oracle(payable(ORACLE()));
+        address dao = DAO();
+        address subapiMultisig = SUBAPIMULTISIG();
         address echo = 0x0f14341A7f464320319025540E8Fe48Ad0fe5aec;
         address yalin = 0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77;
-        o.setApproved(DAO(), true);
-        o.setApproved(echo, true);
-        o.setApproved(yalin, true);
-        o.changeOwner(SUBAPIMULTISIG());
+        if (!o.isApproved(dao)) {
+            o.setApproved(dao, true);
+        }
+        if (!o.isApproved(echo)) {
+            o.setApproved(echo, true);
+        }
+        if (!o.isApproved(yalin)) {
+            o.setApproved(yalin, true);
+        }
+        address owner = o.owner();
+        if (owner != subapiMultisig) {
+            o.changeOwner(subapiMultisig);
+        }
     }
 
     function configRelayer() internal {
         Relayer r = Relayer(payable(RELAYER()));
+        address dao = DAO();
         address echo = 0x0f14341A7f464320319025540E8Fe48Ad0fe5aec;
         address yalin = 0x912D7601569cBc2DF8A7f0aaE50BFd18e8C64d05;
-        r.setApproved(DAO(), true);
-        r.setApproved(echo, true);
-        r.setApproved(yalin, true);
+        address guantong = 0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85;
+        if (!r.isApproved(dao)) {
+            r.setApproved(dao, true);
+        }
+        if (!r.isApproved(echo)) {
+            r.setApproved(echo, true);
+        }
+        if (!r.isApproved(yalin)) {
+            r.setApproved(yalin, true);
+        }
+        if (!r.isApproved(guantong)) {
+            r.setApproved(guantong, true);
+        }
     }
 
     function configORMP() internal {
-        ORMP(ORMPAddr()).setDefaultConfig(ORACLE(), RELAYER());
+        address ormp = ORMPAddr();
+        address oracle = ORACLE();
+        address relayer = RELAYER();
+        (address o, address r) = ORMP(ormp).defaultUC();
+        if (o != oracle || r != relayer) {
+            ORMP(ormp).setDefaultConfig(oracle, relayer);
+        }
     }
 
     function configORMPUPort() internal {
         string memory uri = "ipfs://bafybeifa7fgeb63rnashodi5k27fxfqfc65hdbyjum5aiqtd2xjeno2dgy";
-        ORMPUpgradeablePort(ORMPUPORT()).setURI(uri);
+        address ormpuport = ORMPUPORT();
+        if (!ScriptTools.eq(uri, ORMPUpgradeablePort(ormpuport).uri())) {
+            ORMPUpgradeablePort(ormpuport).setURI(uri);
+        }
     }
 }
