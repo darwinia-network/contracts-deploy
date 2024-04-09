@@ -2,23 +2,31 @@
 src = "src"
 out = "out"
 libs = ["lib"]
-sender = "0x0f14341A7f464320319025540E8Fe48Ad0fe5aec"
-force = true
+sender = "0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f"
+force = false
 optimizer = true
+verbosity = 5
 auto_detect_remappings = false
 optimizer_runs = 999999
 evm_version = "london"
 bytecode_hash = "ipfs"
+extra_output = ['storageLayout']
 extra_output_files = ["metadata"]
+fs_permissions = [
+  { "access" = "read-write", "path" = "./cache"},
+  { "access" = "read-write", "path" = "./out" },
+  { "access" = "read-write", "path" = "./deployments/" },
+  { "access" = "read", "path" = "./script/input/" },
+]
 
 [rpc_endpoints]
-arbitrum-goerli = "https://goerli-rollup.arbitrum.io/rpc"
-arbitrum-sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
-pangolin = "https://pangolin-rpc.darwinia.network"
-crab = "https://crab-rpc.darwinia.network"
+arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
+darwinia_pangolin = "https://pangolin-rpc.darwinia.network"
+sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
+taiko_katla = "https://rpc.katla.taiko.xyz"
 
 [etherscan]
-arbitrum-goerli = { key = "${ETHERSCAN_ARBITRUM_KEY}" }
-arbitrum-sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}" }
-pangolin = { key = "${ETHERSCAN_DARWINIA_KEY}", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
-crab = { key = "${ETHERSCAN_DARWINIA_KEY}", url = "https://crab.api.subscan.io/api/scan/evm/contract/verifysource" }
+sepolia = { key = "${ETHERSCAN_API_KEY}"}
+arbitrum_sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}"}
+darwinia_pangolin = { key = "", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
+taiko_katla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/1/etherscan/api"}

@@ -2,7 +2,7 @@
 pragma solidity 0.8.17;
 
 // Subapi
-import {SubAPI} from "subapi/src/SubAPI.sol";
+import {SubAPIMultiSig} from "subapi/src/SubAPIMultiSig.sol";
 
 // ORMP
 import {ORMP} from "ORMP/src/ORMP.sol";
