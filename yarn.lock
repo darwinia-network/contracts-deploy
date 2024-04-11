@@ -1053,19 +1053,28 @@
   dependencies:
     tslib "^2.6.2"
 
-"@sphinx-labs/contracts@^0.21.0", "@sphinx-labs/contracts@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@sphinx-labs/contracts/-/contracts-0.21.1.tgz#097b9f8d2b2294be303c7434d529b0d0c73b51d5"
-  integrity sha512-Nzm7oOLr0oBBv3ObtR3shx7wzfTYfDgLKLhGp8DHCJOaCSwQ0Fu21e9GWyHkdluLyABt6AHFyB9E8F+OhvlmUw==
+"@sphinx-labs/contracts@^0.21.4":
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/@sphinx-labs/contracts/-/contracts-0.21.4.tgz#f2594310839f20c732b195778f0491009a3d6a96"
+  integrity sha512-1cYvU0tWRmiwkzTp54ItT/hwm2y+DRPVqMW1K+NKjeHFMVO2JAXLe2u2Si2jstEOsKmTGpsKrPHEop1uDrC1bg==
   dependencies:
     "@openzeppelin/contracts" "4.9.3"
     ethers "^6.7.0"
     solmate "6.2.0"
 
-"@sphinx-labs/core@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@sphinx-labs/core/-/core-0.24.0.tgz#8410b35b46478c52e532333834e2d50138807f6b"
-  integrity sha512-4de8m3XPRrqf/QbE0k9yrElxQ23B1SL3Y/BFdP5wvFlsgP4aq7QlEPoSsIcoH4UDzHOBuWcwaiuFiYtL17uyMw==
+"@sphinx-labs/contracts@^0.21.5":
+  version "0.21.5"
+  resolved "https://registry.yarnpkg.com/@sphinx-labs/contracts/-/contracts-0.21.5.tgz#37561b8ee0be487c7e09911b17f4055ad3d9002d"
+  integrity sha512-c9Zb8jYxCmVL+kZr2vcLau/850Zhr66erDrgXN5EBDpKtGyJGETttxUYIRNJ49iiPSFrV2l39nJoueJrGQOMtQ==
+  dependencies:
+    "@openzeppelin/contracts" "4.9.3"
+    ethers "^6.7.0"
+    solmate "6.2.0"
+
+"@sphinx-labs/core@^0.24.4":
+  version "0.24.4"
+  resolved "https://registry.yarnpkg.com/@sphinx-labs/core/-/core-0.24.4.tgz#99364c86c6dc21731c02d4f5d2800866cabedc86"
+  integrity sha512-XTlcY5VJmBPF1NYiVv8Ogq/HqlhEd3eX6gUhUyXDT0RsalRB6dCaS9584vOXrjePDcN2puhQynHUH9S5EpOEJg==
   dependencies:
     "@amplitude/node" "^1.10.2"
     "@eth-optimism/common-ts" "^0.7.1"
@@ -1074,7 +1083,7 @@
     "@nomicfoundation/hardhat-verify" "^2.0.2"
     "@openzeppelin/hardhat-upgrades" "^1.22.1"
     "@openzeppelin/merkle-tree" "1.0.5"
-    "@sphinx-labs/contracts" "^0.21.0"
+    "@sphinx-labs/contracts" "^0.21.4"
     axios "^1.4.0"
     chalk "^4.1.2"
     core-js "^3.27.1"
@@ -1090,18 +1099,18 @@
     undici "^5.21.1"
     yesno "^0.4.0"
 
-"@sphinx-labs/plugins@0.31.1":
-  version "0.31.1"
-  resolved "https://registry.yarnpkg.com/@sphinx-labs/plugins/-/plugins-0.31.1.tgz#27669f8eae66e36b7e07040af33c33ebc5ebe75d"
-  integrity sha512-nGVd2OjW+ZQdg/Yk3Ljx9WUOzlA6smSHIvKwJmuT+eKkOaDnDpCp3NShCXjRLn14RGxBTFignjt2A98c8baanw==
+"@sphinx-labs/plugins@0.31.6":
+  version "0.31.6"
+  resolved "https://registry.yarnpkg.com/@sphinx-labs/plugins/-/plugins-0.31.6.tgz#cb79052d0145b8da0de1e48d4e32278f0ae6e5a4"
+  integrity sha512-18g+MpaMeODxzkJKO31bId2lUTdm0w4y5w65BnYoygH9RJJS34954E9ItlTMvLGZ7VEZv+ogwDPDRlzVMWsdYg==
   dependencies:
     "@eth-optimism/contracts" "^0.5.40"
     "@ethersproject/bignumber" "^5.7.0"
     "@nomicfoundation/hardhat-ethers" "^3.0.5"
     "@openzeppelin/contracts" "^4.8.1"
     "@openzeppelin/hardhat-upgrades" "^1.22.1"
-    "@sphinx-labs/contracts" "^0.21.1"
-    "@sphinx-labs/core" "^0.24.0"
+    "@sphinx-labs/contracts" "^0.21.5"
+    "@sphinx-labs/core" "^0.24.4"
     "@swc/core" "1.3.75"
     chalk "^4.1.2"
     core-js "^3.31.1"
