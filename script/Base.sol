@@ -16,7 +16,7 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
     function configureSphinx() public override {
         sphinxConfig.owners = [0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f];
         sphinxConfig.orgId = "cluanacaw000111jik4xs4wkl";
-        sphinxConfig.projectName = "Msgport";
+        sphinxConfig.projectName = "Darwinia-DAO";
         sphinxConfig.threshold = 1;
         sphinxConfig.testnets = ["sepolia", "darwinia_pangolin", "arbitrum_sepolia", "taiko_katla"];
         // sphinxConfig.mainnets = [];
