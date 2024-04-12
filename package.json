@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "@sphinx-labs/plugins": "0.31.6"
+    "@sphinx-labs/plugins": "0.31.8"
   }
 }
