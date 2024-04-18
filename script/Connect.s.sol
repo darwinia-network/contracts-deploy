@@ -12,9 +12,9 @@ import {safeconsole} from "forge-std/safeconsole.sol";
 import "../src/Msgport.sol";
 
 contract ConnectScript is Base, OracleConfig, RelayerConfig {
-    Oracle oracle = Oracle(payable(0xf64a5353Cf2Da7EE514F53Ee949c43E1BC4f494e));
-    Relayer relayer = Relayer(payable(0x305cdd9C20adC44BdD722B6A37F49Cb439623E49));
-    ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0xE21d9cf3E8EDb84ca74D6F24a754eE4474306319);
+    Oracle oracle = Oracle(payable(0xc9b01C6cec82E88a7ad91729168b7777bC3700ea));
+    Relayer relayer = Relayer(payable(0x1fE374083cF6c885755647e6E97cfed67c429479));
+    ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0xc4644e8Cf311d168B6616D5a86fa4386321649E5);
 
     string[] networks;
 
