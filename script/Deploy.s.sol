@@ -8,7 +8,7 @@ import {ScriptTools} from "./ScriptTools.sol";
 import "../src/Msgport.sol";
 
 contract DeployScript is Base {
-    bytes32 salt = bytes32(uint256(11));
+    bytes32 salt = bytes32(uint256(12));
 
     address[] signers = [
         0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77,

@@ -4,11 +4,11 @@
 ### Canonical Cross-chain Deployment Addresses
 |  Contract              |  Canonical Cross-chain Deployment Address  |
 |------------------------|--------------------------------------------|
-| SubAPIMultiSig         | 0x1Dd98870eF254e797FB47e322C80bd7ABeFa4b7d |
-| ORMP                   | 0x0E84c56B2bc162616A9f0073a00b5C39C8b5772E |
-| Oracle                 | 0xc9b01C6cec82E88a7ad91729168b7777bC3700ea |
-| Relayer                | 0x1fE374083cF6c885755647e6E97cfed67c429479 |
-| ORMPUpgradeablePort    | 0xc4644e8Cf311d168B6616D5a86fa4386321649E5 |
+| SubAPIMultiSig         | 0xbC9dA866bbdd56F5d4f5AA3C1ED7810aa5153b60 |
+| ORMP                   | 0xa30daF3c6071361960aF29e52C1eC860a037886f |
+| Oracle                 | 0x0503c037719d7b39402a3ee9AA60b7ed604BB1f7 |
+| Relayer                | 0xA3B91e8Eb30825632Ca001a0a7c5839386ab838D |
+| ORMPUpgradeablePort    | 0xd7D1a5d67A6Ab825947Cf45664bF02f263FB73e9 |
 | MsgDeployer            | 0x701609866556Cb9A1FBD6B40201cD5899c9D2d56 |
 
 ## Supported Chains

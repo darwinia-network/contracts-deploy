@@ -10,13 +10,16 @@ import {safeconsole} from "forge-std/safeconsole.sol";
 
 // Msgport
 import "../src/Msgport.sol";
+import "./Deploy.s.sol";
 
 contract ConnectScript is Base, OracleConfig, RelayerConfig {
-    Oracle oracle = Oracle(payable(0xc9b01C6cec82E88a7ad91729168b7777bC3700ea));
-    Relayer relayer = Relayer(payable(0x1fE374083cF6c885755647e6E97cfed67c429479));
-    ORMPUpgradeablePort ormpUpgradeablePort = ORMPUpgradeablePort(0xc4644e8Cf311d168B6616D5a86fa4386321649E5);
+    Oracle oracle;
+    Relayer relayer;
+    ORMPUpgradeablePort ormpUpgradeablePort;
 
     string[] networks;
+
+    DeployScript deploy;
 
     function setUp() public {
         if (block.chainid == 31337) {
@@ -25,6 +28,10 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         uint256 local = block.chainid;
         string memory config = ScriptTools.loadConfig(vmSafe.toString(local));
         init(local, config);
+        deploy = new DeployScript();
+        oracle = Oracle(payable(deploy.ORACLE()));
+        relayer = Relayer(payable(deploy.RELAYER()));
+        ormpUpgradeablePort = ORMPUpgradeablePort(deploy.ORMPUPORT());
     }
 
     function init(uint256 local, string memory config) public override(OracleConfig, RelayerConfig) {
