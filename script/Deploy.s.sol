@@ -20,6 +20,13 @@ contract DeployScript is Base {
     uint64 quorum = 3;
 
     function run() public sphinx {
+        deployMsgport();
+        deployXAccount();
+    }
+
+    function deployXAccount() public {}
+
+    function deployMsgport() public {
         // Deploy SubAPIMultiSig
         deploySubAPIMultiSig();
 
@@ -31,10 +38,10 @@ contract DeployScript is Base {
         // Deploy ORMPUpgradeablePort
         deployORMPUPort();
 
-        config();
+        configMsgport();
     }
 
-    function config() public {
+    function configMsgport() public {
         configOracle();
         configRelayer();
         configORMP();

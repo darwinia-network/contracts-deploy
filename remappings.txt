@@ -6,3 +6,4 @@ ORMP/=lib/ORMP/
 @safe-smart-account/=lib/subapi/lib/safe-smart-account/contracts/
 @sphinx-labs/contracts/=lib/sphinx/packages/contracts/contracts/foundry
 forge-std/=lib/forge-std/src/
+solmate/=lib/darwinia-msgport/lib/solmate/src/
