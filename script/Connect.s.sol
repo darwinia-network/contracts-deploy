@@ -2,7 +2,7 @@
 pragma solidity 0.8.17;
 
 import {Base} from "./Base.sol";
-import {ScriptTools} from "./ScriptTools.sol";
+import {TomlTools} from "./TomlTools.sol";
 import {OracleConfig} from "./OracleConfig.sol";
 import {RelayerConfig} from "./RelayerConfig.sol";
 
@@ -26,7 +26,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
             return;
         }
         uint256 local = block.chainid;
-        string memory config = ScriptTools.loadConfig(vmSafe.toString(local));
+        string memory config = TomlTools.loadConfig(vmSafe.toString(local));
         init(local, config);
         deploy = new DeployScript();
         oracle = Oracle(payable(deploy.ORACLE()));
