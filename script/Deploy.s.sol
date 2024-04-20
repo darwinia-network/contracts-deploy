@@ -37,35 +37,35 @@ contract DeployScript is Base {
         if (logic.code.length == 0) _deploy2(salt, logicByteCode);
         bytes memory proxyByteCode = type(PortRegistryProxy).creationCode;
         bytes memory initData = abi.encodeWithSelector(PortRegistry.initialize.selector, DAO());
-        bytes memory initCode = bytes.concat(byteCode, abi.encode(address(logic), initData));
+        bytes memory initCode = bytes.concat(proxyByteCode, abi.encode(address(logic), initData));
         address proxy = computeAddress(salt, hash(initCode));
-        if (proxy.code.lenth == 0) _deploy2(salt, initCode);
+        if (proxy.code.length == 0) _deploy2(salt, initCode);
     }
 
-    function REGISTRY() public view returns (address) {
+    function REGISTRY() public returns (address) {
         bytes memory logicByteCode = type(PortRegistry).creationCode;
         address logic = computeAddress(salt, hash(logicByteCode));
         bytes memory proxyByteCode = type(PortRegistryProxy).creationCode;
         bytes memory initData = abi.encodeWithSelector(PortRegistry.initialize.selector, DAO());
-        bytes memory initCode = bytes.concat(byteCode, abi.encode(address(logic), initData));
+        bytes memory initCode = bytes.concat(proxyByteCode, abi.encode(address(logic), initData));
         return computeAddress(salt, hash(initCode));
     }
 
     function deployMultiPort() internal {
         bytes memory byteCode = type(MultiPort).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), 1, "Multi"));
-        address multiPort = computeAddress(salt, initCode);
-        if (multiPort.code.lenth == 0) _deploy2(salt, initCode);
+        address multiPort = computeAddress(salt, hash(initCode));
+        if (multiPort.code.length == 0) _deploy2(salt, initCode);
     }
 
     function MODULE() public view returns (address) {
         bytes memory byteCode = type(SafeMsgportModule).creationCode;
-        return computeAddress(salt, byteCode);
+        return computeAddress(salt, hash(byteCode));
     }
 
     function deploySafeMsgportModule() internal {
         bytes memory byteCode = type(SafeMsgportModule).creationCode;
-        address module = computeAddress(salt, byteCode);
+        address module = computeAddress(salt, hash(byteCode));
         if (module.code.length == 0) _deploy2(salt, byteCode);
     }
 
@@ -76,7 +76,7 @@ contract DeployScript is Base {
             byteCode,
             abi.encode(DAO(), MODULE(), safeFactory, safeSingleton, safeFallbackHandler, REGISTRY(), "xAccountFactory")
         );
-        address factory = computeAddress(salt, initCode);
+        address factory = computeAddress(salt, hash(initCode));
         if (factory.code.length == 0) _deploy2(salt, initCode);
     }
 
@@ -229,11 +229,12 @@ contract DeployScript is Base {
 
     function readSafeDeployment()
         internal
+        view
         returns (address proxyFactory, address gnosisSafe, address fallbackHandler)
     {
         uint256 chainId = block.chainid;
         string memory root = vm.projectRoot();
-        string memory safeFolder = string(abi.encodePacked("/lib/safe-deployments/src/assets/", safeVerison, "/"));
+        string memory safeFolder = string(abi.encodePacked("/lib/safe-deployments/src/assets/v1.3.0/"));
         string memory proxyFactoryFile = vm.readFile(string(abi.encodePacked(root, safeFolder, "proxy_factory.json")));
         proxyFactory =
             proxyFactoryFile.readAddress(string(abi.encodePacked(".networkAddresses.", vm.toString(chainId))));
