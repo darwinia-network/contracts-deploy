@@ -19,3 +19,6 @@
 [submodule "lib/safe-deployments"]
 	path = lib/safe-deployments
 	url = https://github.com/safe-global/safe-deployments
+[submodule "lib/create3-deploy"]
+	path = lib/create3-deploy
+	url = https://github.com/darwinia-network/create3-deploy
