@@ -44,6 +44,10 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
         return address(uint160(bytes20(addr)));
     }
 
+    function computeCreate3Address(bytes32 salt) internal returns (address) {
+        return ICREATE3Factory(CREATE3()).getDeployed(safeAddress(), salt);
+    }
+
     function computeAddress(bytes32 salt, bytes32 bytecodeHash) internal view returns (address addr) {
         address deployer = CREATE2_ADDR;
         assembly {

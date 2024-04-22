@@ -116,8 +116,9 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
     }
 
     function _setPortRegistry(address port, uint256 chainId, string memory name) internal {
-        require(PortRegistry(registry).get(chainId, name) == address(0));
-        PortRegistry(registry).set(chainId, name, port);
+        if (port != PortRegistry(registry).get(chainId, name)) {
+            PortRegistry(registry).set(chainId, name, port);
+        }
         require(PortRegistry(registry).get(chainId, name) == port);
     }
 }

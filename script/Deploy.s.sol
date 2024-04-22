@@ -99,7 +99,7 @@ contract DeployScript is Base {
             byteCode,
             abi.encode(DAO(), MODULE(), safeFactory, safeSingleton, safeFallbackHandler, REGISTRY(), "xAccountFactory")
         );
-        address factory = computeAddress(salt, hash(initCode));
+        address factory = computeCreate3Address(salt);
         if (factory.code.length == 0) _deploy3(salt, initCode);
     }
 
