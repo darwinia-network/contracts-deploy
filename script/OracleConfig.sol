@@ -19,7 +19,7 @@ contract OracleConfig {
         uint256 len = remotes.length;
         for (uint256 i = 0; i < len; i++) {
             uint256 remote = remotes[i];
-            string memory key = string.concat(".oracle.", vm.toString(remote), ".fee");
+            string memory key = string.concat(".ormp.oracle.", vm.toString(remote), ".fee");
             uint256 fee = config.readUint(key);
             setOracleConfig(local, remote, fee);
         }

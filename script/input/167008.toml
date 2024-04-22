@@ -7,30 +7,31 @@ rpcUrl = "https://rpc.katla.taiko.xyz"
 [remote]
 chains = [11155111,43,421614]
 
-[oracle]
-[oracle.11155111]
+[ormp]
+[ormp.oracle]
+[ormp.oracle.11155111]
 fee = 2750000000000000
 
-[oracle.43]
+[ormp.oracle.43]
 fee = 50000000000
 
-[oracle.421614]
+[ormp.oracle.421614]
 fee = 27500000000000
 
-[relayer]
-[relayer.11155111]
+[ormp.relayer]
+[ormp.relayer.11155111]
 dstPriceRatio = 10000000000 
 dstGasPriceInWei = 25000000000
 baseGas = 120000
 gasPerByte = 16
 
-[relayer.43]
+[ormp.relayer.43]
 dstPriceRatio = 13888 
 dstGasPriceInWei = 160000000000 
 baseGas = 200000
 gasPerByte = 16
 
-[relayer.421614]
+[ormp.relayer.421614]
 dstPriceRatio = 10000000000 
 dstGasPriceInWei = 110000000 
 baseGas = 1

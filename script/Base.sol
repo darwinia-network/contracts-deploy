@@ -6,6 +6,8 @@ import {SphinxConstants, NetworkInfo} from "@sphinx-labs/contracts/SphinxConstan
 import {Script} from "forge-std/Script.sol";
 import {stdToml} from "forge-std/StdToml.sol";
 
+import {CREATE3Factory, ICREATE3Factory} from "create3-deploy/src/CREATE3Factory.sol";
+
 abstract contract Base is Script, Sphinx, SphinxConstants {
     using stdToml for string;
 
@@ -22,6 +24,17 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
         sphinxConfig.testnets = ["sepolia", "darwinia_pangolin", "arbitrum_sepolia", "taiko_katla"];
         // sphinxConfig.mainnets = [];
         // sphinxConfig.saltNonce = 0;
+    }
+
+    function CREATE3() public returns (address create3) {
+        bytes memory byteCode = type(CREATE3Factory).creationCode;
+        bytes32 salt = bytes32(0);
+        create3 = computeAddress(salt, hash(byteCode));
+        if (create3.code.length == 0) _deploy2(salt, byteCode);
+    }
+
+    function _deploy3(bytes32 salt, bytes memory initCode) internal returns (address) {
+        return ICREATE3Factory(CREATE3()).deploy(salt, initCode);
     }
 
     function _deploy2(bytes32 salt, bytes memory initCode) internal returns (address) {

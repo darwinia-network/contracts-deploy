@@ -100,7 +100,7 @@ contract DeployScript is Base {
             abi.encode(DAO(), MODULE(), safeFactory, safeSingleton, safeFallbackHandler, REGISTRY(), "xAccountFactory")
         );
         address factory = computeAddress(salt, hash(initCode));
-        if (factory.code.length == 0) _deploy2(salt, initCode);
+        if (factory.code.length == 0) _deploy3(salt, initCode);
     }
 
     function deployMsgport() public {

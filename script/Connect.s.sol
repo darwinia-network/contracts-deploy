@@ -11,11 +11,21 @@ import {safeconsole} from "forge-std/safeconsole.sol";
 // Msgport
 import "../src/Msgport.sol";
 import "./Deploy.s.sol";
+import {PortRegistry} from "@darwinia-msgport/src/PortRegistry.sol";
+
+interface III {
+    function fromPortLookup(uint256 chainId) external returns (address);
+    function toPortLookup(uint256 chainId) external returns (address);
+    function setFromPort(uint256 chainId, address port) external;
+    function setToPort(uint256 chainId, address port) external;
+}
 
 contract ConnectScript is Base, OracleConfig, RelayerConfig {
     Oracle oracle;
     Relayer relayer;
-    ORMPUpgradeablePort ormpUpgradeablePort;
+    address ormpUpgradeablePort;
+    address multiPort;
+    address registry;
 
     string[] networks;
 
@@ -31,7 +41,9 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         deploy = new DeployScript();
         oracle = Oracle(payable(deploy.ORACLE()));
         relayer = Relayer(payable(deploy.RELAYER()));
-        ormpUpgradeablePort = ORMPUpgradeablePort(deploy.ORMPUPORT());
+        ormpUpgradeablePort = deploy.ORMPUPORT();
+        multiPort = deploy.MULTIPORT();
+        registry = deploy.REGISTRY();
     }
 
     function init(uint256 local, string memory config) public override(OracleConfig, RelayerConfig) {
@@ -53,6 +65,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         uint256 len = networks.length;
         for (uint256 i = 0; i < len; i++) {
             uint256 remoteChainId = getChainId(networks[i]);
+            _setPortRegistry(remoteChainId);
             if (remoteChainId == localChainId) continue;
             _setOracleFee(localChainId, remoteChainId);
             _setRelayerFee(localChainId, remoteChainId);
@@ -83,13 +96,28 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
     }
 
     function _setPortLookup(uint256 localChainId, uint256 remoteChainId) internal {
+        _setPortLookup(ormpUpgradeablePort, localChainId, remoteChainId);
+        _setPortLookup(multiPort, localChainId, remoteChainId);
+    }
+
+    function _setPortLookup(address port, uint256 localChainId, uint256 remoteChainId) internal {
         if (block.chainid != localChainId) return;
-        address port = address(ormpUpgradeablePort);
-        if (port != ormpUpgradeablePort.fromPortLookup(remoteChainId)) {
-            ormpUpgradeablePort.setFromPort(remoteChainId, port);
+        if (port != III(port).fromPortLookup(remoteChainId)) {
+            III(port).setFromPort(remoteChainId, port);
         }
-        if (port != ormpUpgradeablePort.toPortLookup(remoteChainId)) {
-            ormpUpgradeablePort.setToPort(remoteChainId, port);
+        if (port != III(port).toPortLookup(remoteChainId)) {
+            III(port).setToPort(remoteChainId, port);
         }
+    }
+
+    function _setPortRegistry(uint256 chainId) internal {
+        _setPortRegistry(ormpUpgradeablePort, chainId, "ORMP-U");
+        _setPortRegistry(multiPort, chainId, "Multi");
+    }
+
+    function _setPortRegistry(address port, uint256 chainId, string memory name) internal {
+        require(PortRegistry(registry).get(chainId, name) == address(0));
+        PortRegistry(registry).set(chainId, name, port);
+        require(PortRegistry(registry).get(chainId, name) == port);
     }
 }
