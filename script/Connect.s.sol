@@ -14,8 +14,8 @@ import "./Deploy.s.sol";
 import {PortRegistry} from "@darwinia-msgport/src/PortRegistry.sol";
 
 interface III {
-    function fromPortLookup(uint256 chainId) external returns (address);
-    function toPortLookup(uint256 chainId) external returns (address);
+    function fromPortLookup(uint256 chainId) external view returns (address);
+    function toPortLookup(uint256 chainId) external view returns (address);
     function setFromPort(uint256 chainId, address port) external;
     function setToPort(uint256 chainId, address port) external;
 }
