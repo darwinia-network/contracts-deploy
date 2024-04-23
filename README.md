@@ -8,7 +8,7 @@
 | ORMP                   | 0x9BEc71b9C646653C6C73Af8D4B7E5f84a5420005 |
 | Oracle                 | 0xE80Cb57F95f9279C9C3b365B940dE235883D1002 |
 | Relayer                | 0x8D203c1B5190b69048e1a03bB89C5B4E511DB246 |
-| ORMPUpgradeablePort    | 0xc4A3a13E55524ccbda1d24A92f1bf9E493F9F400 |
+| ORMPUpgradeablePort    | 0xD4E9cfa6fe3a68b3a6058B22d550Fe6253d708AB |
 | MsgDeployer            | 0x701609866556Cb9A1FBD6B40201cD5899c9D2d56 |
 | PortRegistry           | 0x1D03520e7F6248675C9F493a945ced9E1E8c12D7 |
 | PortRegistryProxy      | 0xbaEa338a1B9dbD9DbFd52127DA0862d87Eda0A1E |
