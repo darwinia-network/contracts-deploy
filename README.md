@@ -4,12 +4,18 @@
 ### Canonical Cross-chain Deployment Addresses
 |  Contract              |  Canonical Cross-chain Deployment Address  |
 |------------------------|--------------------------------------------|
-| SubAPIMultiSig         | 0xbC9dA866bbdd56F5d4f5AA3C1ED7810aa5153b60 |
-| ORMP                   | 0xa30daF3c6071361960aF29e52C1eC860a037886f |
-| Oracle                 | 0x0503c037719d7b39402a3ee9AA60b7ed604BB1f7 |
-| Relayer                | 0xA3B91e8Eb30825632Ca001a0a7c5839386ab838D |
-| ORMPUpgradeablePort    | 0xd7D1a5d67A6Ab825947Cf45664bF02f263FB73e9 |
+| SubAPIMultiSig         | 0xd630d598Bf0f6575940bE108BAD39A7eaFD72198 |
+| ORMP                   | 0x9BEc71b9C646653C6C73Af8D4B7E5f84a5420005 |
+| Oracle                 | 0xE80Cb57F95f9279C9C3b365B940dE235883D1002 |
+| Relayer                | 0x8D203c1B5190b69048e1a03bB89C5B4E511DB246 |
+| ORMPUpgradeablePort    | 0xc4A3a13E55524ccbda1d24A92f1bf9E493F9F400 |
 | MsgDeployer            | 0x701609866556Cb9A1FBD6B40201cD5899c9D2d56 |
+| PortRegistry           | 0x1D03520e7F6248675C9F493a945ced9E1E8c12D7 |
+| PortRegistryProxy      | 0xbaEa338a1B9dbD9DbFd52127DA0862d87Eda0A1E |
+| MultiPort              | 0x797b9514d82844c50D3DB3AD7BA6BAFF781fd5A0 |
+| SafeMsgportModule      | 0x9A128468FE07104eF54a1aac3cA807661C1E1673 |
+| CREATE3Factory         | 0x43388A0d719ec14Ba2aED9D530637a561E7420bF |
+| XAccountFactory        | 0xFCbF93260b12e6fc14E95305B63A2ca9B6B183F9 |
 
 ## Supported Chains
 ### Mainnet
