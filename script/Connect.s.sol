@@ -14,10 +14,8 @@ import "./Deploy.s.sol";
 import {PortRegistry} from "@darwinia-msgport/src/PortRegistry.sol";
 
 interface III {
-    function fromPortLookup(uint256 chainId) external view returns (address);
-    function toPortLookup(uint256 chainId) external view returns (address);
-    function setFromPort(uint256 chainId, address port) external;
-    function setToPort(uint256 chainId, address port) external;
+    function peerOf(uint256 chainId) external returns (address);
+    function setPeer(uint256 chainId, address peer) external;
 }
 
 contract ConnectScript is Base, OracleConfig, RelayerConfig {
@@ -102,17 +100,14 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
 
     function _setPortLookup(address port, uint256 localChainId, uint256 remoteChainId) internal {
         if (block.chainid != localChainId) return;
-        if (port != III(port).fromPortLookup(remoteChainId)) {
-            III(port).setFromPort(remoteChainId, port);
-        }
-        if (port != III(port).toPortLookup(remoteChainId)) {
-            III(port).setToPort(remoteChainId, port);
+        if (port != III(port).peerOf(remoteChainId)) {
+            III(port).setPeer(remoteChainId, port);
         }
     }
 
     function _setPortRegistry(uint256 chainId) internal {
         _setPortRegistry(ormpUpgradeablePort, chainId, "ORMP-U");
-        _setPortRegistry(multiPort, chainId, "Multi");
+        // _setPortRegistry(multiPort, chainId, "Multi");
     }
 
     function _setPortRegistry(address port, uint256 chainId, string memory name) internal {
