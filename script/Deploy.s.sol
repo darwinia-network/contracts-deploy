@@ -11,7 +11,7 @@ import "../src/Msgport.sol";
 contract DeployScript is Base {
     using stdJson for string;
 
-    bytes32 salt = bytes32(uint256(12));
+    bytes32 salt = bytes32(uint256(1));
 
     address[] signers = [
         0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77,
@@ -24,7 +24,7 @@ contract DeployScript is Base {
 
     function run() public sphinx {
         deployMsgport();
-        deployXAccount();
+        // deployXAccount();
     }
 
     function deployXAccount() public {
