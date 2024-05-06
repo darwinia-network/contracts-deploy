@@ -243,7 +243,7 @@ contract DeployScript is Base {
     }
 
     function configORMPUPort() internal {
-        string memory uri = "ipfs://bafybeifa7fgeb63rnashodi5k27fxfqfc65hdbyjum5aiqtd2xjeno2dgy";
+        string memory uri = "ipfs://bafybeih6v6xzhq4ghe6squdmdf32lvbzk26zvca3tlfqmd4kgwixbo7p2q";
         address ormpuport = ORMPUPORT();
         if (!TomlTools.eq(uri, ORMPUpgradeablePort(ormpuport).uri())) {
             ORMPUpgradeablePort(ormpuport).setURI(uri);
