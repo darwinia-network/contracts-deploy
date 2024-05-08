@@ -16,16 +16,7 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
     error CREATE2FactoryNotDeployed();
 
     function configureSphinx() public override {
-        sphinxConfig.owners = [
-            0x0f14341A7f464320319025540E8Fe48Ad0fe5aec,
-            0x53405FB4d71591E33fe07bFbC90bD82E65720ad0,
-            0x00E3993566b34e5367d1C602439997BD08c11FF7,
-            0x52386BE2397e8EAc26298F733b390684203fB580,
-            0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85
-        ];
-        sphinxConfig.orgId = "cluanacaw000111jik4xs4wkl";
         sphinxConfig.projectName = "RING-DAO";
-        sphinxConfig.threshold = 3;
         sphinxConfig.testnets = ["sepolia", "darwinia_pangolin", "arbitrum_sepolia"];
         // sphinxConfig.mainnets = [];
         // sphinxConfig.saltNonce = 0;

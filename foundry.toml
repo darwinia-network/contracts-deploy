@@ -18,6 +18,7 @@ fs_permissions = [
   { "access" = "read-write", "path" = "./deployments/" },
   { "access" = "read", "path" = "./script/input/" },
   { "access" = "read", "path" = "./lib/safe-deployments/src/assets/" },
+  { "access" = "read", "path"="./sphinx.lock"},
 ]
 
 [rpc_endpoints]
