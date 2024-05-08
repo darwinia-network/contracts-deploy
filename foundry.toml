@@ -24,7 +24,7 @@ fs_permissions = [
 arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
 darwinia_pangolin = "https://pangolin-rpc.darwinia.network"
 sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
-taiko_katla = "https://rpc.katla.taiko.xyz"
+taiko_hekla = "https://rpc.hekla.taiko.xyz"
 
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}"}

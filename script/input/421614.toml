@@ -5,7 +5,7 @@ chainAlias = "arbitrum_sepolia"
 rpcUrl = "https://sepolia-rollup.arbitrum.io/rpc" 
 
 [remote]
-chains = [11155111,43,167008]
+chains = [11155111,43]
 
 [ormp]
 [ormp.oracle]

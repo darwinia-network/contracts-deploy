@@ -5,7 +5,7 @@ chainAlias = "darwinia_pangolin"
 rpcUrl = "https://pangolin-rpc.darwinia.network" 
 
 [remote]
-chains = [11155111,421614,167008]
+chains = [11155111,421614]
 
 [ormp]
 [ormp.oracle]
