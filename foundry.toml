@@ -1,10 +1,10 @@
 [profile.default]
 src = "src"
 out = "out"
+script = "script"
 libs = ["lib"]
 sender = "0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f"
 force = true
-build_info = true
 optimizer = true
 verbosity = 5
 auto_detect_remappings = false
@@ -19,7 +19,7 @@ fs_permissions = [
   { "access" = "read-write", "path" = "./deployments/" },
   { "access" = "read", "path" = "./script/input/" },
   { "access" = "read", "path" = "./lib/safe-deployments/src/assets/" },
-  { "access" = "read", "path"="./sphinx.lock"},
+  { "access" = "read", "path" = "./sphinx.lock" },
 ]
 
 [rpc_endpoints]

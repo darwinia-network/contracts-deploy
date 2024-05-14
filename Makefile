@@ -3,8 +3,6 @@
 
 -include .env
 
-
-
 all    :; @forge build
 fmt    :; @forge fmt
 clean  :; @forge clean
