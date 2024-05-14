@@ -4,6 +4,7 @@ out = "out"
 libs = ["lib"]
 sender = "0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f"
 force = true
+build_info = true
 optimizer = true
 verbosity = 5
 auto_detect_remappings = false
