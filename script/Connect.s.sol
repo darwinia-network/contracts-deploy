@@ -50,11 +50,11 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
     }
 
     function run() public sphinx {
-        bool isTest = vmSafe.envOr("IS_TEST", true);
-        if (isTest) {
-            networks = sphinxConfig.testnets;
-        } else {
+        bool IS_PROD = vmSafe.envOr("IS_PROD", true);
+        if (IS_PROD) {
             networks = sphinxConfig.mainnets;
+        } else {
+            networks = sphinxConfig.testnets;
         }
         connect(block.chainid);
     }
