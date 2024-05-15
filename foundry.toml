@@ -2,9 +2,13 @@
 src = "src"
 out = "out"
 script = "script"
+cache = true
+cache_path = "cache"
+# build_info = true
+# build_info_path = "out/build-info"
 libs = ["lib"]
 sender = "0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f"
-force = true
+force = false
 optimizer = true
 verbosity = 5
 auto_detect_remappings = false
