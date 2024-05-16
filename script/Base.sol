@@ -16,7 +16,8 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
     error CREATE2FactoryNotDeployed();
 
     function configureSphinx() public override {
-        sphinxConfig.projectName = "RING-DAO";
+        // sphinxConfig.projectName = "RING-DAO";
+        sphinxConfig.projectName = "Msgport";
         sphinxConfig.testnets = ["sepolia", "darwinia_pangolin", "arbitrum_sepolia"];
         // sphinxConfig.mainnets = [];
         // sphinxConfig.saltNonce = 0;
