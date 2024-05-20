@@ -13,6 +13,8 @@ propose-deploy-test  :; npx sphinx propose ./script/Deploy.s.sol  --networks tes
 propose-deploy-prod  :; npx sphinx propose ./script/Deploy.s.sol  --networks mainnets
 propose-connect-test :;	npx sphinx propose ./script/Connect.s.sol --networks testnets
 
+execute :; npx sphinx execute $(path)
+
 sphinx :; @npx sphinx install
 sync   :; @git submodule update --recursive
 tools  :  foundry

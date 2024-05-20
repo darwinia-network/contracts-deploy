@@ -494,24 +494,24 @@
   resolved "https://registry.yarnpkg.com/@fastify/busboy/-/busboy-2.1.1.tgz#b9da6a878a371829a0502c9b6c1c143ef6663f4d"
   integrity sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==
 
-"@hujw77/contracts@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@hujw77/contracts/-/contracts-0.1.2.tgz#31a02c222ca99444e736eec79d366541c7b30535"
-  integrity sha512-aM7QOdZgMd89z0hYT/LDOUgXIo1SZITMCjT9ykaqsfc/hJFBAsbRVi9KHB+5m9k5wuj4EUEIp/YrPZlJwr5THg==
+"@hujw77/contracts@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@hujw77/contracts/-/contracts-0.1.3.tgz#21a40898a4508466a7e35b3e576f2a9f0e6d994c"
+  integrity sha512-D8hlc8WfGQ87WEowjTD7apG53xYIB+Frk/h40W8rebomDz2+BCsslTjVK1eaRfbRwxcaboFHcYfGET6BusMpFg==
   dependencies:
     "@openzeppelin/contracts" "4.9.3"
     ethers "^6.7.0"
     solmate "6.2.0"
 
-"@hujw77/core@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@hujw77/core/-/core-0.1.2.tgz#d1abd45f390fb97b1e4da6b93098df3c0dc18a79"
-  integrity sha512-DwaguUyEN5IUfng5ZpoDEpSifeP58CSSqk9n7s7bVFYG1+cbbbrD5j5PGRnx/ZC9wrqCk6uMJbToaLBOs/AJag==
+"@hujw77/core@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@hujw77/core/-/core-0.1.3.tgz#2a14d193d69ccaf839ba03d67fd9f5985153ab5b"
+  integrity sha512-AXU6ou6+jbJPCWJ5rGSzKjmQAvvjFqG51RL/u5dElZDrhV8CwZC8HZ9LZon1SIyHtNHzLM70dOeGcjsgh1MDXQ==
   dependencies:
     "@amplitude/node" "^1.10.2"
     "@eth-optimism/common-ts" "^0.7.1"
     "@ethersproject/bignumber" "^5.7.0"
-    "@hujw77/contracts" "^0.1.2"
+    "@hujw77/contracts" "^0.1.3"
     "@nomicfoundation/hardhat-ethers" "^3.0.4"
     "@nomicfoundation/hardhat-verify" "^2.0.2"
     "@openzeppelin/hardhat-upgrades" "^1.22.1"
@@ -531,16 +531,16 @@
     undici "^5.21.1"
     yesno "^0.4.0"
 
-"@hujw77/plugins@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@hujw77/plugins/-/plugins-0.1.2.tgz#0b50c7bf0e2102d04eaf18ba39b313ad91636bee"
-  integrity sha512-nFvHL5xTpEVKb/29qgecLC2DLJkvuZBfiRKjUHFJFuoySH+EwdKMubbC8Ewf2yUJ/83ZY+3RH8jNUjP2qD85UQ==
+"@hujw77/plugins@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@hujw77/plugins/-/plugins-0.1.3.tgz#a2efa89c323c8d2f1bb4359af5d952a98a3d5193"
+  integrity sha512-7mM97Dj7Fd2iDlWQIZn0xZMpGgLdw0f33cT5c4uTRgr16+Z36+gz/VriLUsaL5spxhlayFqrNnkX5nUwgIMxZg==
   dependencies:
     "@eth-optimism/common-ts" "^0.7.1"
     "@eth-optimism/contracts" "^0.5.40"
     "@ethersproject/bignumber" "^5.7.0"
-    "@hujw77/contracts" "^0.1.2"
-    "@hujw77/core" "^0.1.2"
+    "@hujw77/contracts" "^0.1.3"
+    "@hujw77/core" "^0.1.3"
     "@nomicfoundation/hardhat-ethers" "^3.0.5"
     "@openzeppelin/contracts" "^4.8.1"
     "@openzeppelin/hardhat-upgrades" "^1.22.1"
