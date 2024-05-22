@@ -31,6 +31,7 @@ arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
 darwinia_pangolin = "https://pangolin-rpc.darwinia.network"
 sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
 taiko_hekla = "https://rpc.hekla.taiko.xyz"
+tanssi_pangoro = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network"
 
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}"}
