@@ -1,0 +1,65 @@
+[local]
+name = "Arbitrum"
+chainId = 42161
+chainAlias = "arbitrum"
+rpcUrl = "https://arb1.arbitrum.io/rpc" 
+
+[remote]
+chains = [1,44,46,137,1284,81457]
+
+[ormp]
+[ormp.oracle]
+[ormp.oracle.1]
+fee = "2000000000000000"
+
+[ormp.oracle.44]
+fee = "100000000000"
+
+[ormp.oracle.46]
+fee = "2000000000000"
+
+[ormp.oracle.137]
+fee = "2000000000000"
+
+[ormp.oracle.1284]
+fee = "2000000000000"
+
+[ormp.oracle.81457]
+fee = "40000000000000"
+
+[ormp.relayer]
+[ormp.relayer.1]
+dstPriceRatio = 10000000000 
+dstGasPriceInWei = 25000000000
+baseGas = 120000
+gasPerByte = 16
+
+[ormp.relayer.44]
+dstPriceRatio = 1081 
+dstGasPriceInWei = 80000000000
+baseGas = 200000
+gasPerByte = 16
+
+[ormp.relayer.46]
+dstPriceRatio = 10810 
+dstGasPriceInWei = 60000000000 
+baseGas = 200000
+gasPerByte = 16
+
+[ormp.relayer.137]
+dstPriceRatio = 2000000 
+dstGasPriceInWei = 140000000000 
+baseGas = 200000 
+gasPerByte = 16
+
+[ormp.relayer.1284]
+dstPriceRatio = 810810 
+dstGasPriceInWei = 110000000 
+baseGas = 1
+gasPerByte = 16
+
+[ormp.relayer.81457]
+dstPriceRatio = 10000000000 
+dstGasPriceInWei = 1000000000 
+baseGas = 120000
+gasPerByte = 16
