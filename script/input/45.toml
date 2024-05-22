@@ -1,15 +1,15 @@
 [local]
-name = "Darwinia Pangolin"
-chainId = 43
-chainAlias = "darwinia_pangolin"
-rpcUrl = "https://pangolin-rpc.darwinia.network" 
+name = "Tanssi Pangoro"
+chainId = 45
+chainAlias = "tanssi_pangoro"
+rpcUrl = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network" 
 
 [remote]
-chains = [45,167009,421614,11155111]
+chains = [43,167009,421614,11155111]
 
 [ormp]
 [ormp.oracle]
-[ormp.oracle.45]
+[ormp.oracle.43]
 fee = "100000000000000000"
 
 [ormp.oracle.167009]
@@ -23,10 +23,10 @@ fee = "100000000000000000"
 
 
 [ormp.relayer]
-[ormp.relayer.45]
+[ormp.relayer.43]
 dstPriceRatio = 10000000000 
 dstGasPriceInWei = 1050000000
-baseGas = 200000
+baseGas = 100000
 gasPerByte = 16
 
 [ormp.relayer.167009]
