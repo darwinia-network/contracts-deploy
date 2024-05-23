@@ -37,4 +37,4 @@ tanssi_pangoro = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network"
 sepolia = { key = "${ETHERSCAN_API_KEY}"}
 arbitrum_sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}"}
 darwinia_pangolin = { key = "", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
-taiko_katla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/1/etherscan/api"}
+taiko_hekla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/167009/etherscan/api"}
