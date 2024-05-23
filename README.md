@@ -5,10 +5,10 @@
 |  Contract              |  Canonical Cross-chain Deployment Address  |
 |------------------------|--------------------------------------------|
 | SubAPIMultiSig         | 0x22117Db68370590c1031f52a6D1aDE3DCe0cCf9a |
-| ORMP                   | 0xdf7b91c92Ac62447Ccb92bd39f41727466534043 |
-| Oracle                 | 0x833D98516A0194305afd882e06AF21fa386B91e9 |
-| Relayer                | 0x51AB5e383430042eE0bAfc23a7715E71F8e56a63 |
-| ORMPUpgradeablePort    | 0x24A9886194A21FeCca211BE8DfCF3F281b11109E |
+| ORMP                   | 0xA72d283015c01807bc0788Bf22C1A774bDbFC8fA |
+| Oracle                 | 0x3f938756ceFa33665719Eb528E581FF3f460b7C6 |
+| Relayer                | 0xaC2b224c2E1eD2E8663097a361A05a72d6671C7D |
+| ORMPUpgradeablePort    | 0x8d22f03a675064BFd7509c87206d33730f33e324 |
 | MsgDeployer            | 0x040f331774Ed6BB161412B4cEDb1358B382aF3A5 |
 
 ## Supported Chains
@@ -19,6 +19,8 @@ TODO
 - Arbitrum Sepolia
 - Sepolia
 - Darwinia Pangolin
+- Tanssi Pangoro
+- Taiko Hekla
 
 
 ### Sign Merkle Root DAPP
