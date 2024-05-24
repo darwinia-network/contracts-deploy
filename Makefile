@@ -9,9 +9,9 @@ clean  :; @forge clean
 deploy :; npx sphinx deploy  ./script/Deploy.s.sol  --network $(chain) --confirm --verify
 connect:; npx sphinx deploy  ./script/Connect.s.sol --network $(chain) --confirm
 
-propose-deploy-test  :; npx sphinx propose ./script/Deploy.s.sol  --networks testnets
-propose-deploy-prod  :; npx sphinx propose ./script/Deploy.s.sol  --networks mainnets
-propose-connect-test :;	npx sphinx propose ./script/Connect.s.sol --networks testnets
+dry-run       :; npx sphinx propose ./script/common/Proposal.s.sol  --networks mainnets
+propose-test  :; npx sphinx propose ./script/common/Proposal.s.sol  --networks testnets
+propose-prod  :; npx sphinx propose ./script/common/Proposal.s.sol  --networks mainnets
 
 execute :; npx sphinx execute $(path)
 
