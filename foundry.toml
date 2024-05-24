@@ -27,11 +27,21 @@ fs_permissions = [
 ]
 
 [rpc_endpoints]
+## testnets
 arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
 darwinia_pangolin = "https://pangolin-rpc.darwinia.network"
 sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
 taiko_hekla = "https://rpc.hekla.taiko.xyz"
 tanssi_pangoro = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network"
+
+## mainnets
+ethereum = "https://mainnet.infura.io/v3/${INFURA_KEY}"
+darwinia = "https://darwinia-rpc.itering.io"
+crab = "https://crab-rpc.itering.io"
+arbitrum = "https://arb1.arbitrum.io/rpc"
+blast = "https://rpc.blast.io"
+polygon = "https://polygon-mainnet.infura.io/v3/${INFURA_KEY}"
+moonbeam = "https://rpc.api.moonbeam.network"
 
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}"}
