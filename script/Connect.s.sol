@@ -14,7 +14,7 @@ import "./Deploy.s.sol";
 import {PortRegistry} from "@darwinia-msgport/src/PortRegistry.sol";
 
 interface III {
-    function peerOf(uint256 chainId) external returns (address);
+    function peerOf(uint256 chainId) external view returns (address);
     function setPeer(uint256 chainId, address peer) external;
 }
 
