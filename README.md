@@ -30,15 +30,6 @@ Relayer: TWArBv4oRtVE4MAkqaEVHHiBQX1Wc7xDg6
 ORMPUpgradeablePort: TVT1osWgsPvdwxN9rPm7rRo78naN3fA23x
 ```
 
-#### Tron
-```
-SUBAPIMultiSig: TMP3K1GjRgsXAUHX1jkBaBwaordRi9gHRH
-ORMP: TBuAR5bP2KoJ6Thx4zFqGChSARNRYrknTD
-Oracle: TYYcXSzzc8r4Q17xrYUtqWEMtKUNwNictu
-Relayer: TWArBv4oRtVE4MAkqaEVHHiBQX1Wc7xDg6
-ORMPUpgradeablePort: TVT1osWgsPvdwxN9rPm7rRo78naN3fA23x
-```
-
 ### Testnet
 - Arbitrum Sepolia
 - Sepolia
