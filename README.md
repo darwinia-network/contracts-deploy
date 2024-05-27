@@ -13,7 +13,13 @@
 
 ## Supported Chains
 ### Mainnet
-TODO
+- Arbitrum
+- Blast
+- Crab
+- Darwinia
+- Ethereum
+- Polygon
+- Moonbeam
 
 #### Tron
 ```
