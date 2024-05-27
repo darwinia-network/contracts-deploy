@@ -1,0 +1,65 @@
+[local]
+name = "Polygon"
+chainId = 137
+chainAlias = "polygon"
+rpcUrl = "https://polygon-mainnet.infura.io/v3/b9794ad1ddf84dfb8c34d6bb5dca2001" 
+
+[remote]
+chains = [1,44,46,1284,42161,81457]
+
+[ormp]
+[ormp.oracle]
+[ormp.oracle.1]
+fee = "10000000000000000000"
+
+[ormp.oracle.44]
+fee = "500000000000000"
+
+[ormp.oracle.46]
+fee = "10000000000000000"
+
+[ormp.oracle.1284]
+fee = "10000000000000000"
+
+[ormp.oracle.42161]
+fee = "200000000000000000"
+
+[ormp.oracle.81457]
+fee = "200000000000000000"
+
+[ormp.relayer]
+[ormp.relayer.1]
+dstPriceRatio = 51388888888888 
+dstGasPriceInWei = 25000000000
+baseGas = 120000
+gasPerByte = 16
+
+[ormp.relayer.44]
+dstPriceRatio = 2777777 
+dstGasPriceInWei = 80000000000
+baseGas = 200000
+gasPerByte = 16
+
+[ormp.relayer.46]
+dstPriceRatio = 5555555 
+dstGasPriceInWei = 60000000000 
+baseGas = 200000
+gasPerByte = 16
+
+[ormp.relayer.1284]
+dstPriceRatio = 4166666666 
+dstGasPriceInWei = 140000000000 
+baseGas = 200000 
+gasPerByte = 16
+
+[ormp.relayer.42161]
+dstPriceRatio = 51388888888888 
+dstGasPriceInWei = 110000000 
+baseGas = 1
+gasPerByte = 16
+
+[ormp.relayer.81457]
+dstPriceRatio = 51388888888888 
+dstGasPriceInWei = 1000000000 
+baseGas = 120000
+gasPerByte = 16

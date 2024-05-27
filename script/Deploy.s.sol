@@ -2,13 +2,16 @@
 pragma solidity 0.8.17;
 
 import {Base} from "./Base.sol";
-import {ScriptTools} from "./ScriptTools.sol";
+import {TomlTools} from "./TomlTools.sol";
+import {stdJson} from "forge-std/StdJson.sol";
 
 // Msgport
 import "../src/Msgport.sol";
 
 contract DeployScript is Base {
-    bytes32 salt = bytes32(uint256(10));
+    using stdJson for string;
+
+    bytes32 salt = bytes32(uint256(1));
 
     address[] signers = [
         0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77,
@@ -20,6 +23,87 @@ contract DeployScript is Base {
     uint64 quorum = 3;
 
     function run() public sphinx {
+        deployMsgport();
+        // deployXAccount();
+    }
+
+    function deployXAccount() public {
+        deployPortRegistry();
+        deployMultiPort();
+        deploySafeMsgportModule();
+        deployXAccountFactory();
+
+        configXAccount();
+    }
+
+    function configXAccount() public {
+        configMultiPort();
+    }
+
+    function configMultiPort() internal {
+        MultiPort multiPort = MultiPort(MULTIPORT());
+        address ormpPort = ORMPUPORT();
+        if (!multiPort.isTrustedPort(ormpPort)) {
+            multiPort.addTrustedPort(ormpPort);
+        }
+    }
+
+    function REGISTRY() public returns (address) {
+        bytes memory logicByteCode = type(PortRegistry).creationCode;
+        address logic = computeAddress(salt, hash(logicByteCode));
+        bytes memory proxyByteCode = type(PortRegistryProxy).creationCode;
+        bytes memory initData = abi.encodeWithSelector(PortRegistry.initialize.selector, DAO());
+        bytes memory initCode = bytes.concat(proxyByteCode, abi.encode(address(logic), initData));
+        return computeAddress(salt, hash(initCode));
+    }
+
+    function MODULE() public view returns (address) {
+        bytes memory byteCode = type(SafeMsgportModule).creationCode;
+        return computeAddress(salt, hash(byteCode));
+    }
+
+    function MULTIPORT() public returns (address) {
+        bytes memory byteCode = type(MultiPort).creationCode;
+        bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), 1, "Multi"));
+        return computeAddress(salt, hash(initCode));
+    }
+
+    function deployPortRegistry() internal {
+        bytes memory logicByteCode = type(PortRegistry).creationCode;
+        address logic = computeAddress(salt, hash(logicByteCode));
+        if (logic.code.length == 0) _deploy2(salt, logicByteCode);
+        bytes memory proxyByteCode = type(PortRegistryProxy).creationCode;
+        bytes memory initData = abi.encodeWithSelector(PortRegistry.initialize.selector, DAO());
+        bytes memory initCode = bytes.concat(proxyByteCode, abi.encode(address(logic), initData));
+        address proxy = computeAddress(salt, hash(initCode));
+        if (proxy.code.length == 0) _deploy2(salt, initCode);
+    }
+
+    function deployMultiPort() internal {
+        bytes memory byteCode = type(MultiPort).creationCode;
+        bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), 1, "Multi"));
+        address multiPort = computeAddress(salt, hash(initCode));
+        if (multiPort.code.length == 0) _deploy2(salt, initCode);
+    }
+
+    function deploySafeMsgportModule() internal {
+        bytes memory byteCode = type(SafeMsgportModule).creationCode;
+        address module = computeAddress(salt, hash(byteCode));
+        if (module.code.length == 0) _deploy2(salt, byteCode);
+    }
+
+    function deployXAccountFactory() internal {
+        (address safeFactory, address safeSingleton, address safeFallbackHandler) = readSafeDeployment();
+        bytes memory byteCode = type(XAccountFactory).creationCode;
+        bytes memory initCode = bytes.concat(
+            byteCode,
+            abi.encode(DAO(), MODULE(), safeFactory, safeSingleton, safeFallbackHandler, REGISTRY(), "xAccountFactory")
+        );
+        address factory = computeCreate3Address(salt);
+        if (factory.code.length == 0) _deploy3(salt, initCode);
+    }
+
+    function deployMsgport() public {
         // Deploy SubAPIMultiSig
         deploySubAPIMultiSig();
 
@@ -31,10 +115,10 @@ contract DeployScript is Base {
         // Deploy ORMPUpgradeablePort
         deployORMPUPort();
 
-        config();
+        configMsgport();
     }
 
-    function config() public {
+    function configMsgport() public {
         configOracle();
         configRelayer();
         configORMP();
@@ -159,10 +243,37 @@ contract DeployScript is Base {
     }
 
     function configORMPUPort() internal {
-        string memory uri = "ipfs://bafybeifa7fgeb63rnashodi5k27fxfqfc65hdbyjum5aiqtd2xjeno2dgy";
+        string memory uri = "ipfs://bafybeidmfr357ouhgr3zwupkl66unzicf6kkies4bkq6fv5lmz5rtvrk5e";
         address ormpuport = ORMPUPORT();
-        if (!ScriptTools.eq(uri, ORMPUpgradeablePort(ormpuport).uri())) {
+        if (!TomlTools.eq(uri, ORMPUpgradeablePort(ormpuport).uri())) {
             ORMPUpgradeablePort(ormpuport).setURI(uri);
         }
+    }
+
+    function readSafeDeployment()
+        internal
+        view
+        returns (address proxyFactory, address gnosisSafe, address fallbackHandler)
+    {
+        uint256 chainId = block.chainid;
+        string memory root = vm.projectRoot();
+        string memory safeFolder = string(abi.encodePacked("/lib/safe-deployments/src/assets/v1.3.0/"));
+        string memory proxyFactoryFile = vm.readFile(string(abi.encodePacked(root, safeFolder, "proxy_factory.json")));
+        proxyFactory =
+            proxyFactoryFile.readAddress(string(abi.encodePacked(".networkAddresses.", vm.toString(chainId))));
+        string memory gasisSafeJson;
+        if (isL2(chainId)) {
+            gasisSafeJson = "gnosis_safe_l2.json";
+        } else {
+            gasisSafeJson = "gnosis_safe.json";
+        }
+
+        string memory fallbackHandlerFile =
+            vm.readFile(string(abi.encodePacked(root, safeFolder, "compatibility_fallback_handler.json")));
+        fallbackHandler =
+            fallbackHandlerFile.readAddress(string(abi.encodePacked(".networkAddresses.", vm.toString(chainId))));
+
+        string memory gnosisSageFile = vm.readFile(string(abi.encodePacked(root, safeFolder, gasisSafeJson)));
+        gnosisSafe = gnosisSageFile.readAddress(string(abi.encodePacked(".networkAddresses.", vm.toString(chainId))));
     }
 }

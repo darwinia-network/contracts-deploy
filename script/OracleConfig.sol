@@ -11,6 +11,8 @@ contract OracleConfig {
 
     // local => remote
     mapping(uint256 => mapping(uint256 => uint256)) public oracleFeeOf;
+    // remote => true
+    mapping(uint256 => bool) public isSupported;
 
     error NotFoundOracleConfig(uint256 local, uint256 remote);
 
@@ -19,7 +21,8 @@ contract OracleConfig {
         uint256 len = remotes.length;
         for (uint256 i = 0; i < len; i++) {
             uint256 remote = remotes[i];
-            string memory key = string.concat(".oracle.", vm.toString(remote), ".fee");
+            isSupported[remote] = true;
+            string memory key = string.concat(".ormp.oracle.", vm.toString(remote), ".fee");
             uint256 fee = config.readUint(key);
             setOracleConfig(local, remote, fee);
         }

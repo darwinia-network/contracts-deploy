@@ -4,9 +4,7 @@ pragma solidity >=0.8.0;
 import {VmSafe} from "forge-std/Vm.sol";
 import {stdToml} from "forge-std/StdToml.sol";
 
-/// @title Script Tools
-/// @dev Contains opinionated tools used in scripts.
-library ScriptTools {
+library TomlTools {
     VmSafe private constant vm = VmSafe(address(uint160(uint256(keccak256("hevm cheat code")))));
 
     string internal constant DEFAULT_DELIMITER = ",";

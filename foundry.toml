@@ -1,6 +1,11 @@
 [profile.default]
 src = "src"
 out = "out"
+script = "script"
+cache = true
+cache_path = "cache"
+# build_info = true
+# build_info_path = "out/build-info"
 libs = ["lib"]
 sender = "0xD70A2e6eACbdeDA77a5d4bBAE3bC70239A0e088f"
 force = false
@@ -17,16 +22,23 @@ fs_permissions = [
   { "access" = "read-write", "path" = "./out" },
   { "access" = "read-write", "path" = "./deployments/" },
   { "access" = "read", "path" = "./script/input/" },
+  { "access" = "read", "path" = "./lib/safe-deployments/src/assets/" },
+  { "access" = "read", "path" = "./sphinx.lock" },
 ]
 
 [rpc_endpoints]
+## testnets
 arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
 darwinia_pangolin = "https://pangolin-rpc.darwinia.network"
-sepolia = "https://sepolia.infura.io/v3/${INFURA_KEY}"
-taiko_katla = "https://rpc.katla.taiko.xyz"
+sepolia = "https://rpc.ankr.com/eth_sepolia"
+taiko_hekla = "https://rpc.hekla.taiko.xyz"
+tanssi_pangoro = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network"
 
-[etherscan]
-sepolia = { key = "${ETHERSCAN_API_KEY}"}
-arbitrum_sepolia = { key = "${ETHERSCAN_ARBITRUM_KEY}"}
-darwinia_pangolin = { key = "", url = "https://pangolin.api.subscan.io/api/scan/evm/contract/verifysource" }
-taiko_katla = { key = "", url = "https://api.routescan.io/v2/network/testnet/evm/1/etherscan/api"}
+## mainnets
+ethereum = "https://rpc.ankr.com/eth"
+darwinia = "https://darwinia-rpc.itering.io"
+crab = "https://crab-rpc.itering.io"
+arbitrum = "https://arb1.arbitrum.io/rpc"
+blast = "https://rpc.blast.io"
+polygon = "https://rpc.ankr.com/polygon"
+moonbeam = "https://rpc.api.moonbeam.network"

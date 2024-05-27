@@ -1,11 +1,11 @@
 [local]
-name = "Arbitrum One Sepolia"
-chainId = 421614
-chainAlias = "arbitrum_sepolia"
-rpcUrl = "https://sepolia-rollup.arbitrum.io/rpc" 
+name = "Taiko hekla"
+chainId = 167009
+chainAlias = "taiko_hekla"
+rpcUrl = "https://rpc.hekla.taiko.xyz" 
 
 [remote]
-chains = [43,45,167009,11155111]
+chains = [43,45,421614,11155111]
 
 [ormp]
 [ormp.oracle]
@@ -15,11 +15,11 @@ fee = 50000000000
 [ormp.oracle.45]
 fee = 50000000000
 
-[ormp.oracle.167009]
+[ormp.oracle.421614]
 fee = 27500000000000
 
 [ormp.oracle.11155111]
-fee = 27500000000000000
+fee = 2750000000000000
 
 
 [ormp.relayer]
@@ -35,15 +35,15 @@ dstGasPriceInWei = 160000000000
 baseGas = 200000
 gasPerByte = 16
 
-[ormp.relayer.167009]
+[ormp.relayer.421614]
 dstPriceRatio = 10000000000 
-dstGasPriceInWei = 10
-baseGas = 120000
+dstGasPriceInWei = 110000000 
+baseGas = 1
 gasPerByte = 16
 
 [ormp.relayer.11155111]
 dstPriceRatio = 10000000000 
 dstGasPriceInWei = 25000000000
-baseGas = 120000
+baseGas = 100000
 gasPerByte = 16
 

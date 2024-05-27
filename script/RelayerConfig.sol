@@ -28,7 +28,7 @@ contract RelayerConfig {
         uint256 len = remotes.length;
         for (uint256 i = 0; i < len; i++) {
             uint256 remote = remotes[i];
-            string memory key = string.concat(".relayer.", vm.toString(remote));
+            string memory key = string.concat(".ormp.relayer.", vm.toString(remote));
             string memory key1 = string.concat(key, ".dstPriceRatio");
             string memory key2 = string.concat(key, ".dstGasPriceInWei");
             string memory key3 = string.concat(key, ".baseGas");

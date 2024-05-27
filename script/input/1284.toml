@@ -1,0 +1,65 @@
+[local]
+name = "Moonbeam"
+chainId = 1284
+chainAlias = "moonbeam"
+rpcUrl = "https://rpc.api.moonbeam.network" 
+
+[remote]
+chains = [1,44,46,137,42161,81457]
+
+[ormp]
+[ormp.oracle]
+[ormp.oracle.1]
+fee = "25000000000000000000"
+
+[ormp.oracle.44]
+fee = "1500000000000000"
+
+[ormp.oracle.46]
+fee = "25000000000000000"
+
+[ormp.oracle.1284]
+fee = "25000000000000000"
+
+[ormp.oracle.42161]
+fee = "5000000000000000000"
+
+[ormp.oracle.81457]
+fee = "5000000000000000000"
+
+[ormp.relayer]
+[ormp.relayer.1]
+dstPriceRatio = 123333333333333 
+dstGasPriceInWei = 25000000000
+baseGas = 120000
+gasPerByte = 16
+
+[ormp.relayer.44]
+dstPriceRatio = 6666666 
+dstGasPriceInWei = 80000000000
+baseGas = 200000
+gasPerByte = 16
+
+[ormp.relayer.46]
+dstPriceRatio = 133333333 
+dstGasPriceInWei = 60000000000 
+baseGas = 200000
+gasPerByte = 16
+
+[ormp.relayer.137]
+dstPriceRatio = 24000000000 
+dstGasPriceInWei = 140000000000 
+baseGas = 200000 
+gasPerByte = 16
+
+[ormp.relayer.42161]
+dstPriceRatio = 123333333333333 
+dstGasPriceInWei = 110000000 
+baseGas = 1
+gasPerByte = 16
+
+[ormp.relayer.81457]
+dstPriceRatio = 123333333333333 
+dstGasPriceInWei = 1000000000 
+baseGas = 120000
+gasPerByte = 16

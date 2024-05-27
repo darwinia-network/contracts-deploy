@@ -10,9 +10,15 @@
 [submodule "lib/openzeppelin-contracts"]
 	path = lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
-[submodule "lib/sphinx"]
-	path = lib/sphinx
-	url = https://github.com/sphinx-labs/sphinx
 [submodule "lib/forge-std"]
 	path = lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "lib/safe-deployments"]
+	path = lib/safe-deployments
+	url = https://github.com/safe-global/safe-deployments
+[submodule "lib/create3-deploy"]
+	path = lib/create3-deploy
+	url = https://github.com/darwinia-network/create3-deploy
+[submodule "lib/sphinx"]
+	path = lib/sphinx
+	url = https://github.com/hujw77/sphinx
