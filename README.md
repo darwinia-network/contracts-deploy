@@ -15,7 +15,7 @@
 ### Mainnet
 TODO
 
-### Tron
+#### Tron
 ```
 SUBAPIMultiSig: TMP3K1GjRgsXAUHX1jkBaBwaordRi9gHRH
 ORMP: TBuAR5bP2KoJ6Thx4zFqGChSARNRYrknTD
@@ -31,6 +31,14 @@ ORMPUpgradeablePort: TVT1osWgsPvdwxN9rPm7rRo78naN3fA23x
 - Tanssi Pangoro
 - Taiko Hekla
 
+#### Tron shasta
+```
+SUBAPIMultiSig: TEYbMKVNpumbN5myf5uN6VgFStckj9DGe5
+ORMP: TN1j3Ttt1c1mB3X2zdKkdMsUK6pZyLCxSr
+Oracle: TGaaHxjof9QcfKwggnFVM3QwjGKzbuNzNk
+Relayer: TRediXQ8qcTqorMQqJ2jQgqnjUojWZo2qc
+ORMPUpgradeablePort: TQ49GJrj2wQ7RdhRGT26izeRypcQqwNFpo
+```
 
 ### Sign Merkle Root DAPP
 ```sh
