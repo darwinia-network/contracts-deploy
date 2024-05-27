@@ -18,7 +18,7 @@ fee = "1500000000000000"
 [ormp.oracle.46]
 fee = "25000000000000000"
 
-[ormp.oracle.1284]
+[ormp.oracle.137]
 fee = "25000000000000000"
 
 [ormp.oracle.42161]
