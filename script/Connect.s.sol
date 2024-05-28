@@ -50,13 +50,19 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
     }
 
     function run() public sphinx {
-        bool IS_PROD = vmSafe.envOr("IS_PROD", false);
+        bool IS_PROD = vmSafe.envOr("IS_PROD", true);
         if (IS_PROD) {
             networks = sphinxConfig.mainnets;
         } else {
             networks = sphinxConfig.testnets;
         }
         connect(block.chainid);
+        // darwinia connect to tron
+        if (block.chainid == 46) {
+            III(0x8d22f03a675064BFd7509c87206d33730f33e324).setPeer(
+                728126428, 0xd5ACb1876B907A954755a08D3009EEDC0127065d
+            );
+        }
     }
 
     function connect(uint256 localChainId) internal {
