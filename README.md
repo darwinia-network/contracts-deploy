@@ -21,6 +21,8 @@
 - Polygon
 - Moonbeam
 
+**NOTE**: All the chains listed above are connected, except for the Tron network, which is only connected to Darwinia network.
+
 #### Tron
 ```
 SUBAPIMultiSig: TMP3K1GjRgsXAUHX1jkBaBwaordRi9gHRH

@@ -59,9 +59,14 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         connect(block.chainid);
         // darwinia connect to tron
         if (block.chainid == 46) {
-            III(0x8d22f03a675064BFd7509c87206d33730f33e324).setPeer(
-                728126428, 0xd5ACb1876B907A954755a08D3009EEDC0127065d
-            );
+            if (
+                0xd5ACb1876B907A954755a08D3009EEDC0127065d
+                    != III(0x8d22f03a675064BFd7509c87206d33730f33e324).peerOf(728126428)
+            ) {
+                III(0x8d22f03a675064BFd7509c87206d33730f33e324).setPeer(
+                    728126428, 0xd5ACb1876B907A954755a08D3009EEDC0127065d
+                );
+            }
         }
     }
 
