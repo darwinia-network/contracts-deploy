@@ -10,22 +10,26 @@ chains = [44,46,137,1284,42161,81457]
 [ormp]
 [ormp.oracle]
 [ormp.oracle.44]
-fee = 100000000000 
+# fee = 100000000000 
+fee = 0
 
 [ormp.oracle.46]
 fee = 2000000000000 
 
 [ormp.oracle.137]
-fee = 2000000000000
+# fee = 2000000000000
+fee = 0
 
 [ormp.oracle.1284]
-fee = 2000000000000
+# fee = 2000000000000
+fee = 0
 
 [ormp.oracle.42161]
 fee = 40000000000000
 
 [ormp.oracle.81457]
-fee = 40000000000000
+# fee = 40000000000000
+fee = 0
 
 
 [ormp.relayer]
