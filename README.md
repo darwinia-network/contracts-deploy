@@ -11,26 +11,6 @@
 | ORMPUpgradeablePort    | 0x8d22f03a675064BFd7509c87206d33730f33e324 |
 | MsgDeployer            | 0x040f331774Ed6BB161412B4cEDb1358B382aF3A5 |
 
-## Supported Lines
-### Mainnet
-- Darwinia <> Crab
-- Darwinia <> Arbitrum
-- Darwinia <> Ethereum
-- Darwinia <> Polygon
-- Darwinia <> Moonbeam
-- Darwinia <> Tron
-- Arbitrum <> Blast
-- Ethereum <> Arbitrum
-
-### Testnet
-- Darwinia Pangolin <> Arbitrum Sepolia
-- Darwinia Pangolin <> Tron Shasta
-- Darwinia Pangolin <> Sepolia
-- Sepolia <> Arbitrum Sepolia
-- Sepolia <> Tron Shasta
-- Sepolia <> Tanssi Pangoro
-- Arbitrum Sepolia <> Taiko Hekla
-
 ## Supported Chains
 ### Mainnet
 - Arbitrum
@@ -65,6 +45,26 @@ Oracle: TGaaHxjof9QcfKwggnFVM3QwjGKzbuNzNk
 Relayer: TRediXQ8qcTqorMQqJ2jQgqnjUojWZo2qc
 ORMPUpgradeablePort: TQ49GJrj2wQ7RdhRGT26izeRypcQqwNFpo
 ```
+
+## Supported Lines
+### Mainnet
+- Darwinia <> Crab
+- Darwinia <> Arbitrum
+- Darwinia <> Ethereum
+- Darwinia <> Polygon
+- Darwinia <> Moonbeam
+- Darwinia <> Tron
+- Arbitrum <> Blast
+- Ethereum <> Arbitrum
+
+### Testnet
+- Darwinia Pangolin <> Arbitrum Sepolia
+- Darwinia Pangolin <> Tron Shasta
+- Darwinia Pangolin <> Sepolia
+- Sepolia <> Arbitrum Sepolia
+- Sepolia <> Tron Shasta
+- Sepolia <> Tanssi Pangoro
+- Arbitrum Sepolia <> Taiko Hekla
 
 ### Sign Merkle Root DAPP
 ```sh
