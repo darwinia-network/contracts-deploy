@@ -11,6 +11,26 @@
 | ORMPUpgradeablePort    | 0x8d22f03a675064BFd7509c87206d33730f33e324 |
 | MsgDeployer            | 0x040f331774Ed6BB161412B4cEDb1358B382aF3A5 |
 
+## Supported Lines
+### Mainnet
+- Darwinia <> Crab
+- Darwinia <> Arbitrum
+- Darwinia <> Ethereum
+- Darwinia <> Polygon
+- Darwinia <> Moonbeam
+- Darwinia <> Tron
+- Arbitrum <> Blast
+- Ethereum <> Arbitrum
+
+### Testnet
+- Darwinia Pangolin <> Arbitrum Sepolia
+- Darwinia Pangolin <> Tron Shasta
+- Darwinia Pangolin <> Sepolia
+- Sepolia <> Arbitrum Sepolia
+- Sepolia <> Tron Shasta
+- Sepolia <> Tanssi Pangoro
+- Arbitrum Sepolia <> Taiko Hekla
+
 ## Supported Chains
 ### Mainnet
 - Arbitrum
@@ -20,8 +40,6 @@
 - Ethereum
 - Polygon
 - Moonbeam
-
-**NOTE**: All the chains listed above are connected, except for the Tron network, which is only connected to Darwinia network.
 
 #### Tron
 ```
