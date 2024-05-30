@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "../Connect.s.sol";
+import "../Deploy.s.sol";
 
-contract Proposal is ConnectScript {}
+contract Proposal is DeployScript {}
