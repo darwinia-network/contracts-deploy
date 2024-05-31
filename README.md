@@ -21,8 +21,6 @@
 - Polygon
 - Moonbeam
 
-**NOTE**: All the chains listed above are connected, except for the Tron network, which is only connected to Darwinia network.
-
 #### Tron
 ```
 SUBAPIMultiSig: TMP3K1GjRgsXAUHX1jkBaBwaordRi9gHRH
@@ -47,6 +45,26 @@ Oracle: TGaaHxjof9QcfKwggnFVM3QwjGKzbuNzNk
 Relayer: TRediXQ8qcTqorMQqJ2jQgqnjUojWZo2qc
 ORMPUpgradeablePort: TQ49GJrj2wQ7RdhRGT26izeRypcQqwNFpo
 ```
+
+## Supported Lines
+### Mainnet
+- Darwinia <> Crab
+- Darwinia <> Arbitrum
+- Darwinia <> Ethereum
+- Darwinia <> Polygon
+- Darwinia <> Moonbeam
+- Darwinia <> Tron
+- Arbitrum <> Blast
+- Ethereum <> Arbitrum
+
+### Testnet
+- Darwinia Pangolin <> Arbitrum Sepolia
+- Darwinia Pangolin <> Tron Shasta
+- Darwinia Pangolin <> Sepolia
+- Sepolia <> Arbitrum Sepolia
+- Sepolia <> Tron Shasta
+- Sepolia <> Tanssi Pangoro
+- Arbitrum Sepolia <> Taiko Hekla
 
 ### Sign Merkle Root DAPP
 ```sh
