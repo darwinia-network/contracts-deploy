@@ -5,7 +5,7 @@ chainAlias = "moonbeam"
 rpcUrl = "https://rpc.api.moonbeam.network" 
 
 [remote]
-chains = [1,44,46,137,42161,81457]
+chains = [46]
 
 [ormp]
 [ormp.oracle]

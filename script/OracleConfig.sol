@@ -34,6 +34,6 @@ contract OracleConfig {
 
     function getOracleConfig(uint256 local, uint256 remote) public view returns (uint256 fee) {
         fee = oracleFeeOf[local][remote];
-        // if (fee == 0) revert NotFoundOracleConfig(local, remote);
+        if (fee == 0) revert NotFoundOracleConfig(local, remote);
     }
 }

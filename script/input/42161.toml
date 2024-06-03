@@ -5,7 +5,7 @@ chainAlias = "arbitrum"
 rpcUrl = "https://arb1.arbitrum.io/rpc" 
 
 [remote]
-chains = [1,44,46,137,1284,81457]
+chains = [1,46,81457]
 
 [ormp]
 [ormp.oracle]

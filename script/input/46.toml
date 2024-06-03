@@ -5,7 +5,7 @@ chainAlias = "darwinia"
 rpcUrl = "https://rpc.darwinia.network" 
 
 [remote]
-chains = [1,44,137,1284,42161,81457]
+chains = [1,44,137,1284,42161]
 
 [ormp]
 [ormp.oracle]
