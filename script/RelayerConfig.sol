@@ -61,6 +61,6 @@ contract RelayerConfig {
 
     function getRelayerConfig(uint256 local, uint256 remote) public view returns (Config memory c) {
         c = configOf[local][remote];
-        // if (c.baseGas == 0) revert NotFoundRelayerConfig(local, remote);
+        if (c.baseGas == 0) revert NotFoundRelayerConfig(local, remote);
     }
 }

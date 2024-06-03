@@ -5,7 +5,7 @@ chainAlias = "blast"
 rpcUrl = "https://rpc.blast.io" 
 
 [remote]
-chains = [1,44,46,137,1284,42161]
+chains = [42161]
 
 [ormp]
 [ormp.oracle]
