@@ -24,10 +24,10 @@
 #### Tron
 ```
 SUBAPIMultiSig: TMP3K1GjRgsXAUHX1jkBaBwaordRi9gHRH
-ORMP: TBuAR5bP2KoJ6Thx4zFqGChSARNRYrknTD
-Oracle: TYYcXSzzc8r4Q17xrYUtqWEMtKUNwNictu
-Relayer: TWArBv4oRtVE4MAkqaEVHHiBQX1Wc7xDg6
-ORMPUpgradeablePort: TVT1osWgsPvdwxN9rPm7rRo78naN3fA23x
+ORMP: TJPZeFEdc4TBEcNbku5xVZLQ6B2Q1oGnd1
+Oracle: TV9FgX1jHSg1k6kEaZtYR2ZH4AdqnMCDak
+Relayer: TSZgvR9xTGeG3RXcUKnWWcUAAAEskXdCHj 
+ORMPUpgradeablePort: TFRF7t9m7pGLnwwX8TFsZvj85EvQ6gSBCm
 ```
 
 ### Testnet
