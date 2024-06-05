@@ -531,10 +531,10 @@
     undici "^5.21.1"
     yesno "^0.4.0"
 
-"@hujw77/plugins@0.1.12":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@hujw77/plugins/-/plugins-0.1.12.tgz#a3d5e4a8066f4d436fed3088324c063fae270e40"
-  integrity sha512-ZNPkTrrYPuTDrBCnKjy1Fh3tJWPuuUHFuFfbkY9EdQsOyO9WHNZIpKr75l6FG9bj3DGQN6S+TTForGH65dhjkQ==
+"@hujw77/plugins@0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@hujw77/plugins/-/plugins-0.1.13.tgz#9ff8dab0da8cde34405c98997faca8aad9ff305b"
+  integrity sha512-FW1pnfRvajiVzkUE6EPF5fhD6ap8A0mOktdxCx+J4kobOM82KlwK6PLlEA88+M+lqCIJdJR2/CD8q8D5HunWJw==
   dependencies:
     "@eth-optimism/common-ts" "^0.7.1"
     "@eth-optimism/contracts" "^0.5.40"
