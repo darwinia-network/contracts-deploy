@@ -5,11 +5,11 @@ chainAlias = "taiko_hekla"
 rpcUrl = "https://rpc.hekla.taiko.xyz" 
 
 [remote]
-chains = [43,45,421614,11155111]
+chains = [701,45,421614,11155111]
 
 [ormp]
 [ormp.oracle]
-[ormp.oracle.43]
+[ormp.oracle.701]
 fee = 50000000000
 
 [ormp.oracle.45]
@@ -23,7 +23,7 @@ fee = 2750000000000000
 
 
 [ormp.relayer]
-[ormp.relayer.43]
+[ormp.relayer.701]
 dstPriceRatio = 13888 
 dstGasPriceInWei = 160000000000 
 baseGas = 200000

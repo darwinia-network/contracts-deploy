@@ -5,11 +5,11 @@ chainAlias = "tanssi_pangoro"
 rpcUrl = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network" 
 
 [remote]
-chains = [43,167009,421614,11155111]
+chains = [701,167009,421614,11155111]
 
 [ormp]
 [ormp.oracle]
-[ormp.oracle.43]
+[ormp.oracle.701]
 fee = "100000000000000000"
 
 [ormp.oracle.167009]
@@ -23,7 +23,7 @@ fee = "100000000000000000"
 
 
 [ormp.relayer]
-[ormp.relayer.43]
+[ormp.relayer.701]
 dstPriceRatio = 10000000000 
 dstGasPriceInWei = 1050000000
 baseGas = 100000

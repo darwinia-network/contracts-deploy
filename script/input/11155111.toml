@@ -5,11 +5,11 @@ chainAlias = "sepolia"
 rpcUrl = "https://sepolia.infura.io/v3/b9794ad1ddf84dfb8c34d6bb5dca2001" 
 
 [remote]
-chains = [43,45,167009,421614]
+chains = [701,45,167009,421614]
 
 [ormp]
 [ormp.oracle]
-[ormp.oracle.43]
+[ormp.oracle.701]
 fee = 50000000000 
 
 [ormp.oracle.45]
@@ -23,7 +23,7 @@ fee = 27500000000000
 
 
 [ormp.relayer]
-[ormp.relayer.43]
+[ormp.relayer.701]
 dstPriceRatio = 13888 
 dstGasPriceInWei = 160000000000 
 baseGas = 200000
