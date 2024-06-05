@@ -32,17 +32,17 @@ ORMPUpgradeablePort: TFRF7t9m7pGLnwwX8TFsZvj85EvQ6gSBCm
 ### Testnet
 - Arbitrum Sepolia
 - Sepolia
-- Darwinia Pangolin
+- Darwinia Koi
 - Tanssi Pangoro
 - Taiko Hekla
 
 #### Tron shasta
 ```
 SUBAPIMultiSig: TEYbMKVNpumbN5myf5uN6VgFStckj9DGe5
-ORMP: TN1j3Ttt1c1mB3X2zdKkdMsUK6pZyLCxSr
-Oracle: TGaaHxjof9QcfKwggnFVM3QwjGKzbuNzNk
-Relayer: TRediXQ8qcTqorMQqJ2jQgqnjUojWZo2qc
-ORMPUpgradeablePort: TQ49GJrj2wQ7RdhRGT26izeRypcQqwNFpo
+ORMP: TP4BKHBu2ZDPYZiwajdRP7K2H935v9T7gF
+Oracle: 
+Relayer: 
+ORMPUpgradeablePort: 
 ```
 
 ## Supported Lines
@@ -57,9 +57,9 @@ ORMPUpgradeablePort: TQ49GJrj2wQ7RdhRGT26izeRypcQqwNFpo
 - Ethereum <> Arbitrum
 
 ### Testnet
-- Darwinia Pangolin <> Arbitrum Sepolia
-- Darwinia Pangolin <> Tron Shasta
-- Darwinia Pangolin <> Sepolia
+- Darwinia Koi <> Arbitrum Sepolia
+- Darwinia Koi <> Tron Shasta
+- Darwinia Koi <> Sepolia
 - Sepolia <> Arbitrum Sepolia
 - Sepolia <> Tron Shasta
 - Sepolia <> Tanssi Pangoro

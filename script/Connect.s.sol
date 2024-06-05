@@ -58,14 +58,27 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         }
         connect(block.chainid);
         // darwinia connect to tron
-        if (block.chainid == 46) {
-            if (
-                0x3Bc5362EC3a3DBc07292aEd4ef18Be18De02DA3a
-                    != III(0x2cd1867Fb8016f93710B6386f7f9F1D540A60812).peerOf(728126428)
-            ) {
-                III(0x2cd1867Fb8016f93710B6386f7f9F1D540A60812).setPeer(
-                    728126428, 0x3Bc5362EC3a3DBc07292aEd4ef18Be18De02DA3a
-                );
+        if (IS_PROD) {
+            if (block.chainid == 46) {
+                if (
+                    0x3Bc5362EC3a3DBc07292aEd4ef18Be18De02DA3a
+                        != III(0x2cd1867Fb8016f93710B6386f7f9F1D540A60812).peerOf(728126428)
+                ) {
+                    III(0x2cd1867Fb8016f93710B6386f7f9F1D540A60812).setPeer(
+                        728126428, 0x3Bc5362EC3a3DBc07292aEd4ef18Be18De02DA3a
+                    );
+                }
+            }
+        } else {
+            if (block.chainid == 701 || block.chainid == 11155111) {
+                if (
+                    0xb5F017129950C21d870019f6066C42E25acDAAe3
+                        != III(0x2cd1867Fb8016f93710B6386f7f9F1D540A60812).peerOf(2494104990)
+                ) {
+                    III(0x2cd1867Fb8016f93710B6386f7f9F1D540A60812).setPeer(
+                        2494104990, 0xb5F017129950C21d870019f6066C42E25acDAAe3
+                    );
+                }
             }
         }
     }
