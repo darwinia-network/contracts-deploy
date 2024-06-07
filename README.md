@@ -39,10 +39,10 @@ ORMPUpgradeablePort: TFRF7t9m7pGLnwwX8TFsZvj85EvQ6gSBCm
 #### Tron shasta
 ```
 SUBAPIMultiSig: TEYbMKVNpumbN5myf5uN6VgFStckj9DGe5
-ORMP: TP4BKHBu2ZDPYZiwajdRP7K2H935v9T7gF
+ORMP: TPJifBA5MvFf918VYnajd2XmEept4iBX55
 Oracle: TDULRJrJ2bbsvW3KKtEnnq9moPn5PyUWpd
-Relayer: TGrzuCXaGrGPx9THHBn2LHZ4YJS33ccWGA
-ORMPUpgradeablePort: TSZCvXyP618r4AxYmVD15Zu46VB3AFeAyd
+Relayer: TZGjiJcoqUo6JSZeYvrwN6qvpEcLm21QbG
+ORMPUpgradeablePort: TSZCvXyP618r4AxYmVD15Zu46VB3AFeAyd 
 ```
 
 ## Supported Lines
