@@ -29,7 +29,7 @@ fs_permissions = [
 [rpc_endpoints]
 ## testnets
 arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
-darwinia_pangolin = "https://pangolin-rpc.darwinia.network"
+darwinia_koi = "https://koi-rpc.darwinia.network"
 sepolia = "https://rpc.ankr.com/eth_sepolia"
 taiko_hekla = "https://rpc.hekla.taiko.xyz"
 tanssi_pangoro = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network"

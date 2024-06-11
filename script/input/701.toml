@@ -1,8 +1,8 @@
 [local]
-name = "Darwinia Pangolin"
-chainId = 43
-chainAlias = "darwinia_pangolin"
-rpcUrl = "https://pangolin-rpc.darwinia.network" 
+name = "Darwinia Koi"
+chainId = 701
+chainAlias = "darwinia_koi"
+rpcUrl = "https://koi-rpc.darwinia.network" 
 
 [remote]
 chains = [45,167009,421614,11155111]
