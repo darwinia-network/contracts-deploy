@@ -8,7 +8,7 @@
 | Oracle                 | 0xBE01B76AB454aE2497aE43168b1F70C92Ac1C726 |
 | Relayer                | 0x114890eB7386F94eae410186F20968bFAf66142a |
 | ORMPUpgradeablePort    | 0x2cd1867Fb8016f93710B6386f7f9F1D540A60812 |
-| MsgDeployer            | 0x040f331774Ed6BB161412B4cEDb1358B382aF3A5 |
+| RingDAOSafeMultiSig    | 0x040f331774Ed6BB161412B4cEDb1358B382aF3A5 |
 
 ## Supported Chains
 ### Mainnet
