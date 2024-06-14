@@ -23,4 +23,4 @@ jobs:
       - name: Install Sphinx Solidity Library
         run: yarn sphinx install
       - name: Dry Run
-        run: npx sphinx propose ./script/common/Proposal.s.sol --dry-run --networks mainnets
+        run: npx sphinx propose ./script/Proposal.s.sol --dry-run --networks mainnets

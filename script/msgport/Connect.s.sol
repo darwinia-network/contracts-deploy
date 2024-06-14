@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import {Base} from "./Base.sol";
-import {TomlTools} from "./TomlTools.sol";
-import {OracleConfig} from "./OracleConfig.sol";
-import {RelayerConfig} from "./RelayerConfig.sol";
+import {Base} from "../common/Base.sol";
+import {TomlTools} from "../common/TomlTools.sol";
+import {OracleConfig} from "../ormp/OracleConfig.sol";
+import {RelayerConfig} from "../ormp/RelayerConfig.sol";
 
 import {safeconsole} from "forge-std/safeconsole.sol";
 
 // Msgport
-import "../src/Msgport.sol";
+import "../../src/Msgport.sol";
 import "./Deploy.s.sol";
 import {PortRegistry} from "@darwinia-msgport/src/PortRegistry.sol";
 
