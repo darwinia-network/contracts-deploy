@@ -5,7 +5,7 @@ import {Base} from "../common/Base.sol";
 import {TomlTools} from "../common/TomlTools.sol";
 import {stdJson} from "forge-std/StdJson.sol";
 
-import {SafeCast} from "@openzeppelin/contracts/access/IAccessControl.sol";
+import "@openzeppelin/contracts/access/IAccessControl.sol";
 
 contract ConfigScript is Base {
     address depoist = 0x53E294d1B6ec28B251A81aa337212D7a48E6B642;
@@ -19,10 +19,10 @@ contract ConfigScript is Base {
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
     function run() public sphinx {
-        if (!IAccessControl(timelock).hashRole(PROPOSER_ROLE, ringDAO)) {
+        if (!IAccessControl(timelock).hasRole(PROPOSER_ROLE, ringDAO)) {
             IAccessControl(timelock).grantRole(PROPOSER_ROLE, ringDAO);
         }
-        if (!IAccessControl(gRING).hashRole(MINTER_ROLE, hub)) IAccessControl(gRING).grantRole(MINTER_ROLE, hub);
-        if (!IAccessControl(gRING).hashRole(BURNER_ROLE, hub)) IAccessControl(gRING).grantRole(BURNER_ROLE, hub);
+        if (!IAccessControl(gRING).hasRole(MINTER_ROLE, hub)) IAccessControl(gRING).grantRole(MINTER_ROLE, hub);
+        if (!IAccessControl(gRING).hasRole(BURNER_ROLE, hub)) IAccessControl(gRING).grantRole(BURNER_ROLE, hub);
     }
 }

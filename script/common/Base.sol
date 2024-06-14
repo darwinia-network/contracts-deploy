@@ -17,8 +17,9 @@ abstract contract Base is Script, Sphinx, SphinxConstants {
 
     function configureSphinx() public override {
         sphinxConfig.projectName = "RING-DAO";
-        sphinxConfig.testnets = ["sepolia", "arbitrum_sepolia"];
-        sphinxConfig.mainnets = ["ethereum", "darwinia", "crab", "arbitrum", "blast", "polygon", "moonbeam"];
+        sphinxConfig.testnets = ["darwinia_koi"];
+        sphinxConfig.mainnets = [];
+        // sphinxConfig.mainnets = ["ethereum", "darwinia", "crab", "arbitrum", "blast", "polygon", "moonbeam"];
     }
 
     function CREATE3() public returns (address create3) {

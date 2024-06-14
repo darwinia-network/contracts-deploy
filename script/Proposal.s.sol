@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "./msgport/Connect.s.sol";
+import "./ring-dao/Config.s.sol";
 
-contract Proposal is ConnectScript {}
+contract Proposal is ConfigScript {}
