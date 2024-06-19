@@ -11,7 +11,7 @@ interface XTokenBase {
 
     function setSendService(uint256 remoteChainId, address remoteBridge, address service) external;
     function setReceiveService(uint256 remoteChainId, address remoteBridge, address service) external;
-    function messagers(uint256) external returns (MessagerService memory);
+    function messagers(uint256) external view returns (MessagerService memory);
 }
 
 interface IOwnership {
