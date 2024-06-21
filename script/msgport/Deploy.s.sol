@@ -68,6 +68,10 @@ contract DeployScript is Base {
         return computeAddress(salt, hash(initCode));
     }
 
+    function XACCOUNTFACTORY() public returns (address) {
+        return computeCreate3Address(salt);
+    }
+
     function deployPortRegistry() internal {
         bytes memory logicByteCode = type(PortRegistry).creationCode;
         address logic = computeAddress(salt, hash(logicByteCode));
