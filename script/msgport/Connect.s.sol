@@ -23,6 +23,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
     Relayer relayer;
     address ormpUpgradeablePort;
     address multiPort;
+    address xAccountFactory;
     address registry;
 
     string[] networks;
@@ -42,6 +43,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         ormpUpgradeablePort = deploy.ORMPUPORT();
         multiPort = deploy.MULTIPORT();
         registry = deploy.REGISTRY();
+        xAccountFactory = deploy.XACCOUNTFACTORY();
     }
 
     function init(uint256 local, string memory config) public override(OracleConfig, RelayerConfig) {
@@ -87,7 +89,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         uint256 len = networks.length;
         for (uint256 i = 0; i < len; i++) {
             uint256 remoteChainId = getChainId(networks[i]);
-            // _setPortRegistry(remoteChainId);
+            _setPortRegistry(remoteChainId);
             if (remoteChainId == localChainId) continue;
             if (isSupported[remoteChainId]) {
                 _setOracleFee(localChainId, remoteChainId);
@@ -133,7 +135,8 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
 
     function _setPortRegistry(uint256 chainId) internal {
         _setPortRegistry(ormpUpgradeablePort, chainId, "ORMP-U");
-        // _setPortRegistry(multiPort, chainId, "Multi");
+        _setPortRegistry(multiPort, chainId, "Multi");
+        _setPortRegistry(xAccountFactory, chainId, "xAccountFactory");
     }
 
     function _setPortRegistry(address port, uint256 chainId, string memory name) internal {
