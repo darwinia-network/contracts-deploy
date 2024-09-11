@@ -25,6 +25,7 @@ fs_permissions = [
   { "access" = "read", "path" = "./lib/safe-deployments/src/assets/" },
   { "access" = "read", "path" = "./sphinx.lock" },
 ]
+allow_paths = ["../.."]
 
 [rpc_endpoints]
 ## testnets
