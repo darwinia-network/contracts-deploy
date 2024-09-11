@@ -1,6 +1,7 @@
 name: Sphinx Dry Run
 env:
     SPHINX_API_KEY: ${{ secrets.SPHINX_API_KEY }}
+    BLAST_KEY: ${{ secrets.BLAST_KEY }}
 
 on:
   pull_request:
@@ -14,13 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
       - name: Install Dependencies
         run: yarn --frozen-lockfile
-      - name: Install Sphinx Solidity Library
-        run: yarn sphinx install
+      # - name: Install Sphinx Solidity Library
+      #   run: yarn sphinx install
       - name: Dry Run
-        run: npx sphinx propose ./script/Proposal.s.sol --dry-run --networks mainnets
+        run: npx sphinx propose ./script/Proposal.s.sol --dry-run --networks mainnets --targetContract Proposal
