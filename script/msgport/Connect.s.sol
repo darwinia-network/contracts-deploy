@@ -89,7 +89,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         uint256 len = networks.length;
         for (uint256 i = 0; i < len; i++) {
             uint256 remoteChainId = getChainId(networks[i]);
-            _setPortRegistry(remoteChainId);
+            // _setPortRegistry(remoteChainId);
             if (remoteChainId == localChainId) continue;
             if (isSupported[remoteChainId]) {
                 _setOracleFee(localChainId, remoteChainId);
