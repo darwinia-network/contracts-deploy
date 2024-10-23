@@ -28,7 +28,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
 
     string[] networks;
 
-    DeployScript deploy;
+    DeployScript internal deploy;
 
     function setUp() public {
         if (block.chainid == 31337) {
@@ -51,7 +51,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
         RelayerConfig.init(local, config);
     }
 
-    function run() public sphinx {
+    function run() public virtual sphinx {
         bool IS_PROD = vmSafe.envOr("IS_PROD", true);
         if (IS_PROD) {
             networks = sphinxConfig.mainnets;
