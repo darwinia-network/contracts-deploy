@@ -1,0 +1,20 @@
+[local]
+name = "Morph"
+chainId = 2818
+chainAlias = "morph"
+rpcUrl = "https://rpc.morphl2.io" 
+
+[remote]
+chains = [42161]
+
+[ormp]
+[ormp.oracle]
+[ormp.oracle.42161]
+fee = "40000000000000"
+
+[ormp.relayer]
+[ormp.relayer.42161]
+dstPriceRatio = 10000000000 
+dstGasPriceInWei = 1000000000 
+baseGas = 1
+gasPerByte = 16
