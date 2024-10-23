@@ -5,11 +5,11 @@ import "./Connect.s.sol";
 import "../self/SwapOwner.s.sol";
 
 contract OneClickScript is ConnectScript {
+    SwapOwnerScript swap = new SwapOwnerScript();
+
     function run() public override sphinx {
         deploy.run();
         super.run();
-
-        SwapOwnerScript swap = new SwapOwnerScript();
         swap.run();
     }
 }
