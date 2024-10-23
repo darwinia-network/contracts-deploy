@@ -24,7 +24,7 @@ contract DeployScript is Base {
 
     function run() public sphinx {
         deployMsgport();
-        deployXAccount();
+        // deployXAccount();
     }
 
     function deployXAccount() public {

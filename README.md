@@ -19,6 +19,7 @@
 - Ethereum
 - Polygon
 - Moonbeam
+- Morph
 
 #### Tron
 ```
