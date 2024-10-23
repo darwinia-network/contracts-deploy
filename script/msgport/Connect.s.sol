@@ -123,7 +123,7 @@ contract ConnectScript is Base, OracleConfig, RelayerConfig {
 
     function _setPortLookup(uint256 localChainId, uint256 remoteChainId) internal {
         _setPortLookup(ormpUpgradeablePort, localChainId, remoteChainId);
-        _setPortLookup(multiPort, localChainId, remoteChainId);
+        // _setPortLookup(multiPort, localChainId, remoteChainId);
     }
 
     function _setPortLookup(address port, uint256 localChainId, uint256 remoteChainId) internal {
