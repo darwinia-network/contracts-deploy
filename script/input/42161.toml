@@ -5,7 +5,7 @@ chainAlias = "arbitrum"
 rpcUrl = "https://arb1.arbitrum.io/rpc" 
 
 [remote]
-chains = [1,46,81457]
+chains = [1,46,2818,81457]
 
 [ormp]
 [ormp.oracle]
@@ -26,6 +26,9 @@ fee = 0
 [ormp.oracle.1284]
 # fee = "2000000000000"
 fee = 0
+
+[ormp.oracle.2818]
+fee = "40000000000000"
 
 [ormp.oracle.81457]
 fee = "40000000000000"
@@ -59,6 +62,12 @@ gasPerByte = 16
 dstPriceRatio = 810810 
 dstGasPriceInWei = 110000000 
 baseGas = 1
+gasPerByte = 16
+
+[ormp.relayer.2818]
+dstPriceRatio = 10000000000 
+dstGasPriceInWei = 1000000000 
+baseGas = 120000
 gasPerByte = 16
 
 [ormp.relayer.81457]

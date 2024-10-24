@@ -22,9 +22,9 @@ contract DeployScript is Base {
     ];
     uint64 quorum = 3;
 
-    function run() public sphinx {
+    function _run() internal virtual {
         deployMsgport();
-        deployXAccount();
+        // deployXAccount();
     }
 
     function deployXAccount() public {
