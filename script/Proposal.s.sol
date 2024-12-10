@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "./msgport/OneClick.s.sol";
+import "./x-account/Deploy.s.sol";
 
-contract Proposal is OneClickScript {}
+contract Proposal is DeployScript {}
