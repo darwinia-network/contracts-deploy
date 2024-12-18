@@ -22,3 +22,6 @@
 [submodule "lib/sphinx"]
 	path = lib/sphinx
 	url = https://github.com/hujw77/sphinx
+[submodule "lib/XAccount"]
+	path = lib/XAccount
+	url = https://github.com/ringecosystem/XAccount

@@ -24,42 +24,20 @@ contract DeployScript is Base {
 
     function _run() internal virtual {
         deployMsgport();
-        // deployXAccount();
+        // deployMultiPort();
     }
 
-    function deployXAccount() public {
-        deployPortRegistry();
-        deployMultiPort();
-        deploySafeMsgportModule();
-        deployXAccountFactory();
-
-        configXAccount();
+    function deployMultiPort() public {
+        _deployMultiPort();
+        _configMultiPort();
     }
 
-    function configXAccount() public {
-        configMultiPort();
-    }
-
-    function configMultiPort() internal {
+    function _configMultiPort() internal {
         MultiPort multiPort = MultiPort(MULTIPORT());
         address ormpPort = ORMPUPORT();
         if (!multiPort.isTrustedPort(ormpPort)) {
             multiPort.addTrustedPort(ormpPort);
         }
-    }
-
-    function REGISTRY() public returns (address) {
-        bytes memory logicByteCode = type(PortRegistry).creationCode;
-        address logic = computeAddress(salt, hash(logicByteCode));
-        bytes memory proxyByteCode = type(PortRegistryProxy).creationCode;
-        bytes memory initData = abi.encodeWithSelector(PortRegistry.initialize.selector, DAO());
-        bytes memory initCode = bytes.concat(proxyByteCode, abi.encode(address(logic), initData));
-        return computeAddress(salt, hash(initCode));
-    }
-
-    function MODULE() public view returns (address) {
-        bytes memory byteCode = type(SafeMsgportModule).creationCode;
-        return computeAddress(salt, hash(byteCode));
     }
 
     function MULTIPORT() public returns (address) {
@@ -68,43 +46,11 @@ contract DeployScript is Base {
         return computeAddress(salt, hash(initCode));
     }
 
-    function XACCOUNTFACTORY() public returns (address) {
-        return computeCreate3Address(salt);
-    }
-
-    function deployPortRegistry() internal {
-        bytes memory logicByteCode = type(PortRegistry).creationCode;
-        address logic = computeAddress(salt, hash(logicByteCode));
-        if (logic.code.length == 0) _deploy2(salt, logicByteCode);
-        bytes memory proxyByteCode = type(PortRegistryProxy).creationCode;
-        bytes memory initData = abi.encodeWithSelector(PortRegistry.initialize.selector, DAO());
-        bytes memory initCode = bytes.concat(proxyByteCode, abi.encode(address(logic), initData));
-        address proxy = computeAddress(salt, hash(initCode));
-        if (proxy.code.length == 0) _deploy2(salt, initCode);
-    }
-
-    function deployMultiPort() internal {
+    function _deployMultiPort() internal {
         bytes memory byteCode = type(MultiPort).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), 1, "Multi"));
         address multiPort = computeAddress(salt, hash(initCode));
         if (multiPort.code.length == 0) _deploy2(salt, initCode);
-    }
-
-    function deploySafeMsgportModule() internal {
-        bytes memory byteCode = type(SafeMsgportModule).creationCode;
-        address module = computeAddress(salt, hash(byteCode));
-        if (module.code.length == 0) _deploy2(salt, byteCode);
-    }
-
-    function deployXAccountFactory() internal {
-        (address safeFactory, address safeSingleton, address safeFallbackHandler) = readSafeDeployment();
-        bytes memory byteCode = type(XAccountFactory).creationCode;
-        bytes memory initCode = bytes.concat(
-            byteCode,
-            abi.encode(DAO(), MODULE(), safeFactory, safeSingleton, safeFallbackHandler, REGISTRY(), "xAccountFactory")
-        );
-        address factory = computeCreate3Address(salt);
-        if (factory.code.length == 0) _deploy3(salt, initCode);
     }
 
     function deployMsgport() public {
