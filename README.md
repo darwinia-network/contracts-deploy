@@ -33,7 +33,6 @@ ORMPUpgradeablePort: TFRF7t9m7pGLnwwX8TFsZvj85EvQ6gSBCm
 ### Testnet
 - Arbitrum Sepolia
 - Sepolia
-- Darwinia Koi
 - Tanssi Pangoro
 - Taiko Hekla
 
@@ -58,9 +57,6 @@ ORMPUpgradeablePort: TSZCvXyP618r4AxYmVD15Zu46VB3AFeAyd
 - Ethereum <> Arbitrum
 
 ### Testnet
-- Darwinia Koi <> Arbitrum Sepolia
-- Darwinia Koi <> Tron Shasta
-- Darwinia Koi <> Sepolia
 - Sepolia <> Arbitrum Sepolia
 - Sepolia <> Tron Shasta
 - Sepolia <> Tanssi Pangoro
