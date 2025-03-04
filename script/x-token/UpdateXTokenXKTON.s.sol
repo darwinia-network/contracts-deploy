@@ -29,7 +29,7 @@ contract UpdateXTokenXKTONScript is Base {
                 IOwnership(issuing).acceptXTokenOwnership(xKTON);
             }
         }
-        (, address oKTON) = XTokenBase(issuing).originalTokens(xKTON);
+        (, address oKTON) = XTokenBase(issuing).originalTokens(KTON);
         if (oKTON != address(0)) {
             XTokenBase(issuing).updateXToken(46, 0x0000000000000000000000000000000000000402, xKTON);
             XTokenBase(issuing).setDailyLimit(xKTON, 50_000 ether);
