@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "./x-token/UpdateXTokenXKTON.s.sol";
+import "./ormp/UpdateFee.s.sol";
 
-contract Proposal is UpdateXTokenXKTONScript {}
+contract Proposal is UpdateFeeScript {}
