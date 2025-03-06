@@ -10,7 +10,7 @@ chains = [1,44,137,1284,42161]
 [ormp]
 [ormp.oracle]
 [ormp.oracle.1]
-fee = "1800000000000000000000"
+fee = "600000000000000000000"
 
 [ormp.oracle.44]
 fee = "1000000000000000000"
@@ -31,7 +31,7 @@ fee = 0
 [ormp.relayer]
 [ormp.relayer.1]
 dstPriceRatio = 9250000000000000 
-dstGasPriceInWei = 25000000000
+dstGasPriceInWei = 8000000000
 baseGas = 120000
 gasPerByte = 16
 
