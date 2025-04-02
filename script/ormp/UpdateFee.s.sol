@@ -29,7 +29,7 @@ contract UpdateFeeScript is Base, OracleConfig, RelayerConfig {
         RelayerConfig.init(local, config);
     }
 
-	function run() public sphinx {
+    function run() public sphinx {
         bool IS_PROD = vmSafe.envOr("IS_PROD", true);
         if (IS_PROD) {
             networks = sphinxConfig.mainnets;
@@ -37,9 +37,9 @@ contract UpdateFeeScript is Base, OracleConfig, RelayerConfig {
             networks = sphinxConfig.testnets;
         }
         update(block.chainid);
-	}
+    }
 
-	function update(uint256 localChainId) internal {
+    function update(uint256 localChainId) internal {
         uint256 len = networks.length;
         for (uint256 i = 0; i < len; i++) {
             uint256 remoteChainId = getChainId(networks[i]);
@@ -49,7 +49,7 @@ contract UpdateFeeScript is Base, OracleConfig, RelayerConfig {
                 _setRelayerFee(localChainId, remoteChainId);
             }
         }
-	}
+    }
 
     function _setOracleFee(uint256 localChainId, uint256 remoteChainId) internal {
         if (block.chainid != localChainId) return;
