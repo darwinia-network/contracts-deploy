@@ -11,5 +11,10 @@
 
 ## Supported Chains
 
+### Mainnet
+- Arbitrum
+- Darwinia
+- Ethereum
+
 ### Testnet
 - Sepolia <> Arbitrum Sepolia
