@@ -12,13 +12,14 @@ contract DeployScript is Base {
     using stdJson for string;
 
     bytes32 salt = bytes32(uint256(1));
+    bytes32 salt2 = bytes32(uint256(2));
 
     address[] signers = [
-        0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77,
-        0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85,
-        0xA4bE619E8C0E3889f5fA28bb0393A4862Cad35ad,
-        0xB9a0CaDD13C5d534b034d878b2fcA9E5a6e1e3A4,
-        0xFa5727bE643dba6599fC7F812fE60dA3264A8205
+        0x1989D93Ec04037cA64e2af7e48FF5C8Fc2cEA7B8, // xavier
+        0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85, // guantong
+        0xB9a0CaDD13C5d534b034d878b2fcA9E5a6e1e3A4, // echo
+        0xc1A3FEE4132e9285f41F5389570fD9Fbbcb10a1D, // yalin
+        0xFa5727bE643dba6599fC7F812fE60dA3264A8205  // nada
     ];
     uint64 quorum = 3;
 
@@ -148,7 +149,7 @@ contract DeployScript is Base {
     function ORACLE() public returns (address) {
         bytes memory byteCode = type(Oracle).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), ORMPAddr()));
-        return computeAddress(salt, hash(initCode));
+		return computeAddress(salt2, hash(initCode));
     }
 
     function RELAYER() public returns (address) {
@@ -179,7 +180,7 @@ contract DeployScript is Base {
     function deployOracle() internal {
         bytes memory byteCode = type(Oracle).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), ORMPAddr()));
-        if (ORACLE().code.length == 0) _deploy2(salt, initCode);
+        if (ORACLE().code.length == 0) _deploy2(salt2, initCode);
     }
 
     function deployRelayer() internal {
@@ -200,15 +201,19 @@ contract DeployScript is Base {
         address dao = DAO();
         address subapiMultisig = SUBAPIMULTISIG();
         address echo = 0x0f14341A7f464320319025540E8Fe48Ad0fe5aec;
-        address yalin = 0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77;
+        address yalinOld = 0x178E699c9a6bB2Cd624557Fbd85ed219e6faBa77;
+        address yalinNew = 0xc1A3FEE4132e9285f41F5389570fD9Fbbcb10a1D;
         if (!o.isApproved(dao)) {
             o.setApproved(dao, true);
         }
         if (!o.isApproved(echo)) {
             o.setApproved(echo, true);
         }
-        if (!o.isApproved(yalin)) {
-            o.setApproved(yalin, true);
+        if (o.isApproved(yalinOld)) {
+            o.setApproved(yalinOld, false);
+        }
+        if (!o.isApproved(yalinNew)) {
+            o.setApproved(yalinNew, true);
         }
         address owner = o.owner();
         if (owner != subapiMultisig) {
@@ -220,7 +225,8 @@ contract DeployScript is Base {
         Relayer r = Relayer(payable(RELAYER()));
         address dao = DAO();
         address echo = 0x0f14341A7f464320319025540E8Fe48Ad0fe5aec;
-        address yalin = 0x912D7601569cBc2DF8A7f0aaE50BFd18e8C64d05;
+        address yalinOld = 0x912D7601569cBc2DF8A7f0aaE50BFd18e8C64d05;
+        address yalinNew = 0x40C168503B9758540E18A79907F3Fd8678c13f03;
         address guantong = 0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85;
         if (!r.isApproved(dao)) {
             r.setApproved(dao, true);
@@ -228,8 +234,11 @@ contract DeployScript is Base {
         if (!r.isApproved(echo)) {
             r.setApproved(echo, true);
         }
-        if (!r.isApproved(yalin)) {
-            r.setApproved(yalin, true);
+        if (r.isApproved(yalinOld)) {
+            r.setApproved(yalinOld, false);
+        }
+        if (!r.isApproved(yalinNew)) {
+            r.setApproved(yalinNew, true);
         }
         if (!r.isApproved(guantong)) {
             r.setApproved(guantong, true);
