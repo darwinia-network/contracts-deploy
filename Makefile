@@ -7,9 +7,11 @@ all    :; @forge build
 fmt    :; @forge fmt
 clean  :; @forge clean
 
-dry-run       :; npx sphinx propose ./script/Proposal.s.sol --networks mainnets
+dry-run       :; npx sphinx propose ./script/Proposal.s.sol --networks mainnets --dry-run
 propose-test  :; npx sphinx propose ./script/Proposal.s.sol --networks testnets
 propose-prod  :; npx sphinx propose ./script/Proposal.s.sol --networks mainnets
+propose-skip  :; npx sphinx propose ./script/Proposal.s.sol --networks mainnets --skip
+
 
 execute :; npx sphinx execute $(path)
 

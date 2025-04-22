@@ -3,9 +3,9 @@
 ### Canonical Cross-chain Deployment Addresses
 |  Contract              |  Canonical Cross-chain Deployment Address  |
 |------------------------|--------------------------------------------|
-| SubAPIMultiSig         | 0x22117Db68370590c1031f52a6D1aDE3DCe0cCf9a |
+| SubAPIMultiSig         | 0x855275aC7Ea4cc4F324915b2Eb48839E447E04bD |
 | ORMP                   | 0x13b2211a7cA45Db2808F6dB05557ce5347e3634e |
-| Oracle                 | 0xBE01B76AB454aE2497aE43168b1F70C92Ac1C726 |
+| Oracle                 | 0xB49E82067a54b3E8c5D9Db2f378FdB6892C04D2E |
 | Relayer                | 0x114890eB7386F94eae410186F20968bFAf66142a |
 | ORMPUpgradeablePort    | 0x2cd1867Fb8016f93710B6386f7f9F1D540A60812 |
 | RingDAOSafeMultiSig    | 0x040f331774Ed6BB161412B4cEDb1358B382aF3A5 |
@@ -23,9 +23,9 @@
 
 #### Tron
 ```
-SUBAPIMultiSig: TMP3K1GjRgsXAUHX1jkBaBwaordRi9gHRH
+SUBAPIMultiSig: TE44YQQy7uQXk6TBxXDAkzu4BuFkkDGxZX
 ORMP: TJPZeFEdc4TBEcNbku5xVZLQ6B2Q1oGnd1
-Oracle: TV9FgX1jHSg1k6kEaZtYR2ZH4AdqnMCDak
+Oracle: TE44YQQy7uQXk6TBxXDAkzu4BuFkkDGxZX
 Relayer: TSZgvR9xTGeG3RXcUKnWWcUAAAEskXdCHj 
 ORMPUpgradeablePort: TFRF7t9m7pGLnwwX8TFsZvj85EvQ6gSBCm
 ```
