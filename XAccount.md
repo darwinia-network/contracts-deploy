@@ -4,17 +4,12 @@
 |  Contract              |  Canonical Cross-chain Deployment Address  |
 |------------------------|--------------------------------------------|
 | RingDAOSafeMultiSig    | 0x040f331774Ed6BB161412B4cEDb1358B382aF3A5 |
+| PortRegistry           | 0x99503F8A95dD259547900131E3d98F394B6BA88A |
 | MultiPort              | 0xab3172FB251B2047813Ea1940F2cFaA287B1a665 |
-| SafeMsgportModule      | 0x002dD94114497E86b5493E2D048C731e4BeBdDD0 |
-| XAccountFactory        | 0x52CC674e99387B8E0D2525F8a93198726063051E |
-| XAccountUIFactory      | 0x36379F9645676E11017022518845E6b131377230 |
+| SafeMsgportModule      | 0x1899e901F53534489CEA580b6Ec688DddCcd0b91 |
+| XAccountFactory        | 0xC5687DcC8B3bB11067Ee3FC8C2a749ebDd95F8e6 |
 
 ## Supported Chains
-
-### Mainnet
-- Arbitrum
-- Darwinia
-- Ethereum
 
 ### Testnet
 - Sepolia <> Arbitrum Sepolia

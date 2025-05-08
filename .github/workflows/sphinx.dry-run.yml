@@ -20,7 +20,7 @@ jobs:
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
-          version: nightly-7f0f5b4c1aa75dc4fd2eb15aca9757491d885902
+          version: nightly
       - name: Install Dependencies
         run: yarn --frozen-lockfile
       # - name: Install Sphinx Solidity Library
