@@ -12,7 +12,7 @@ contract SwapOwnerScript is Base {
     address bear = 0x5b7544b3f6aBd9E03Fba494796B1eE6F9543E2e4;
 
     function _run() internal virtual {
-        if (block.chainid != 2818) {
+        if (block.chainid != 8453) {
             return;
         }
         address self = safeAddress();

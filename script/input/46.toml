@@ -5,7 +5,7 @@ chainAlias = "darwinia"
 rpcUrl = "https://rpc.darwinia.network" 
 
 [remote]
-chains = [1,44,137,1284,42161]
+chains = [1,44,137,1284,8453,42161]
 
 [ormp]
 [ormp.oracle]
@@ -20,6 +20,9 @@ fee = "2000000000000000000"
 
 [ormp.oracle.1284]
 fee = "2000000000000000000"
+
+[ormp.oracle.8453]
+fee = "36000000000000000000"
 
 [ormp.oracle.42161]
 fee = "36000000000000000000"
@@ -51,6 +54,12 @@ gasPerByte = 16
 dstPriceRatio = 750000000000 
 dstGasPriceInWei = 140000000000 
 baseGas = 200000 
+gasPerByte = 16
+
+[ormp.relayer.8453]
+dstPriceRatio = 9250000000000000 
+dstGasPriceInWei = 1000000000 
+baseGas = 200000
 gasPerByte = 16
 
 [ormp.relayer.42161]

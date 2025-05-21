@@ -2665,7 +2665,7 @@
     "bd281d871188d23306cfa03337a3378b": {
       "id": "bd281d871188d23306cfa03337a3378b",
       "solcVersion": "0.8.17",
-      "solcLongVersion": "0.8.17",
+      "solcLongVersion": "0.8.17+commit.8df45f5f",
       "input": {
         "language": "Solidity",
         "sources": {
@@ -3043,7 +3043,7 @@
   "inputs": [
     {
       "solcVersion": "0.8.17",
-      "solcLongVersion": "0.8.17",
+      "solcLongVersion": "0.8.17+commit.8df45f5f",
       "id": "bd281d871188d23306cfa03337a3378b",
       "input": {
         "language": "Solidity",
