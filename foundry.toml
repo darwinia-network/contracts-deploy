@@ -36,7 +36,7 @@ taiko_hekla = "https://rpc.hekla.taiko.xyz"
 tanssi_pangoro = "https://fraa-flashbox-2871-rpc.a.stagenet.tanssi.network"
 
 ## mainnets
-ethereum = "https://erpc.ringdao.com/main/evm/1"
+ethereum = "https://mainnet.infura.io/v3/b6400dafb2e14de5bf24429abab8e098"
 darwinia = "https://erpc.ringdao.com/main/evm/46"
 crab = "https://erpc.ringdao.com/main/evm/44"
 arbitrum = "https://erpc.ringdao.com/main/evm/42161"
