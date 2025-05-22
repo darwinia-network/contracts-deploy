@@ -13,6 +13,7 @@
 ## Supported Chains
 ### Mainnet
 - Arbitrum
+- Base
 - Blast
 - Crab
 - Darwinia
@@ -49,6 +50,7 @@ ORMPUpgradeablePort: TSZCvXyP618r4AxYmVD15Zu46VB3AFeAyd
 ### Mainnet
 - Darwinia <> Crab
 - Darwinia <> Arbitrum
+- Darwinia <> Base
 - Darwinia <> Ethereum
 - Darwinia <> Polygon
 - Darwinia <> Moonbeam

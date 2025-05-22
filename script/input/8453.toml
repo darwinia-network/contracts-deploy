@@ -1,0 +1,21 @@
+[local]
+name = "Base"
+chainId = 8453
+chainAlias = "base"
+rpcUrl = "https://eprc.ringdao.com/main/evm/8453" 
+
+[remote]
+chains = [46]
+
+[ormp]
+[ormp.oracle]
+
+[ormp.oracle.46]
+fee = "2000000000000"
+
+[ormp.relayer]
+[ormp.relayer.46]
+dstPriceRatio = 10810 
+dstGasPriceInWei = 60000000000 
+baseGas = 200000
+gasPerByte = 16
