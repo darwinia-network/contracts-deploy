@@ -18,6 +18,10 @@ contract SwapOwner2Script is Base {
 
     address relayer = 0x114890eB7386F94eae410186F20968bFAf66142a;
 
+    function run() public sphinx {
+        _run();
+    }
+
     function _run() internal virtual {
         address self = safeAddress();
 
