@@ -17,7 +17,7 @@ contract SwapOwner2Script is Base {
     address xiaoch = 0x88a39B052d477CfdE47600a7C9950a441Ce61cb4;
 
 	address alex = 0x00E3993566b34e5367d1C602439997BD08c11FF7;
-	adddress yalin = 0x9a3b34f81f8005709409eaf65aeca4530011f88d;
+	address yalin = 0x9a3b34f81F8005709409eAf65AEcA4530011f88d;
 
     address relayer = 0x114890eB7386F94eae410186F20968bFAf66142a;
 
