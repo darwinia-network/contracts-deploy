@@ -19,7 +19,7 @@ contract DeployScript is Base {
         0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85, // guantong
         0xB9a0CaDD13C5d534b034d878b2fcA9E5a6e1e3A4, // echo
         0xc1A3FEE4132e9285f41F5389570fD9Fbbcb10a1D, // yalin
-        0xFa5727bE643dba6599fC7F812fE60dA3264A8205  // nada
+        0xFa5727bE643dba6599fC7F812fE60dA3264A8205 // nada
     ];
     uint64 quorum = 3;
 
@@ -149,7 +149,7 @@ contract DeployScript is Base {
     function ORACLE() public returns (address) {
         bytes memory byteCode = type(Oracle).creationCode;
         bytes memory initCode = bytes.concat(byteCode, abi.encode(DAO(), ORMPAddr()));
-		return computeAddress(salt2, hash(initCode));
+        return computeAddress(salt2, hash(initCode));
     }
 
     function RELAYER() public returns (address) {
