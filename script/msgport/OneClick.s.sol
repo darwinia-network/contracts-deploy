@@ -15,6 +15,6 @@ contract OneClickScript is DeployScript, ConnectScript, SwapOwnerScript {
     function _run() internal override(DeployScript, ConnectScript, SwapOwnerScript) {
         DeployScript._run();
         ConnectScript._run();
-        SwapOwnerScript._run();
+        // SwapOwnerScript._run();
     }
 }

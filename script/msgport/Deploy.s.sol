@@ -12,14 +12,14 @@ contract DeployScript is Base {
     using stdJson for string;
 
     bytes32 salt = bytes32(uint256(1));
-    bytes32 salt2 = bytes32(uint256(2));
+    bytes32 salt2 = bytes32(uint256(3));
 
     address[] signers = [
         0x1989D93Ec04037cA64e2af7e48FF5C8Fc2cEA7B8, // xavier
-        0x9F33a4809aA708d7a399fedBa514e0A0d15EfA85, // guantong
+        0x41378a05A19492eC162Ba7b7aC85430e8D5f25A1, // xiaoch
         0xB9a0CaDD13C5d534b034d878b2fcA9E5a6e1e3A4, // echo
         0xc1A3FEE4132e9285f41F5389570fD9Fbbcb10a1D, // yalin
-        0xFa5727bE643dba6599fC7F812fE60dA3264A8205 // nada
+        0xD1542Bd462A419c6D85E939F16f26D427F2a8ef8 // bear
     ];
     uint64 quorum = 3;
 
@@ -240,8 +240,8 @@ contract DeployScript is Base {
         if (!r.isApproved(yalinNew)) {
             r.setApproved(yalinNew, true);
         }
-        if (!r.isApproved(guantong)) {
-            r.setApproved(guantong, true);
+        if (r.isApproved(guantong)) {
+            r.setApproved(guantong, false);
         }
     }
 
