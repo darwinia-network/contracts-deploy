@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "./self/SwapOwner2.s.sol";
+import "./msgport/OneClick.s.sol";
 
-contract Proposal is SwapOwner2Script {}
+contract Proposal is OneClickScript {}
