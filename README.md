@@ -15,7 +15,6 @@
 - Arbitrum
 - Base
 - Blast
-- Crab
 - Darwinia
 - Ethereum
 - Polygon
@@ -48,7 +47,6 @@ ORMPUpgradeablePort: TSZCvXyP618r4AxYmVD15Zu46VB3AFeAyd
 
 ## Supported Lines
 ### Mainnet
-- Darwinia <> Crab
 - Darwinia <> Arbitrum
 - Darwinia <> Base
 - Darwinia <> Ethereum
